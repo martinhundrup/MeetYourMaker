@@ -41,7 +41,7 @@ public class Slime : Enemy
     // chooses a random direction to move in, 50% to target player
     private Vector2 FindDirection()
     {
-        if (Random.Range(0,2) == 0)
+        if (Random.Range(0, 1f) > aggression)
             return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         else
             return (player.transform.position - transform.position).normalized;

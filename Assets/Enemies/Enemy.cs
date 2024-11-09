@@ -10,6 +10,7 @@ public abstract class Enemy : Breakable
     public delegate void EnemyDied(Enemy enemy);
     public event EnemyDied OnEnemyDied;
 
+    [SerializeField] private GameObject corpse; // what to spawn on death
     [SerializeField] private float cost; // how many difficulty points the enemy is worth
     protected PlayerController player;
     protected Rigidbody2D rb;
@@ -22,6 +23,7 @@ public abstract class Enemy : Breakable
     protected bool isInvulnerable = false;
     protected Breakable breakable;
     protected SpriteRenderer sr;
+    [SerializeField, Range(0,1)] protected float aggression = 0;
 
     public float ContactDamage
     {
@@ -44,13 +46,18 @@ public abstract class Enemy : Breakable
 
     private void OnDestroy()
     {
+        if (Health > 0) return; // deleted on scene end, so don't do anything else
+        if (corpse != null) 
+        {
+            Instantiate(corpse).transform.position = this.transform.position;
+        }
         if (OnEnemyDied != null) OnEnemyDied(this);
     }
 
     protected override void TakeDamage(Hitbox _hitbox)
     {
-
-        StartCoroutine(HitStun(_hitbox));
+        if (hasHitstun)
+            StartCoroutine(HitStun(_hitbox));
         //StartCoroutine(MakeInvulnerable()); // remove invulnerbility so multiple bullets can hit
         base.TakeDamage(_hitbox);
 

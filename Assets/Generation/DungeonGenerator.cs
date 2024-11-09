@@ -57,7 +57,7 @@ public class DungeonGenerator : MonoBehaviour
         DrawRoomTiles();
         DrawObstacles();
 
-        GetComponent<RoomController>().Generate();
+        GetComponent<RoomController>().CountEnemies();
     }
 
     private void InitRoomTiles()

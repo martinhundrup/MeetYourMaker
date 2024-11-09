@@ -7,21 +7,20 @@ public class LevelEnd : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private float dist = 0.6f;
     private PlayerController player;
+    private static LevelEnd instance;
 
     private void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this.gameObject);
+        instance = this;
+
         player = FindObjectOfType<PlayerController>();        
     }
 
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            GameEvents.LevelEnd();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (Vector2.Distance(transform.position, player.transform.position) < dist)
         {
@@ -29,6 +28,9 @@ public class LevelEnd : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                instance = null;
+                //Destroy(this.gameObject);
+
                 GameEvents.LevelEnd();
             }
         }
@@ -36,7 +38,5 @@ public class LevelEnd : MonoBehaviour
         {
             sr.enabled = false;
         }
-    }
-
- 
+    } 
 }

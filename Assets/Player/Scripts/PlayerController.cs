@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 facingDirection; // the direction of the cursor relative to shroomie
 
     private PlayerStats playerStats;
+    private GameSettings gameSettings;
     private Blink blink;
     private bool isInvulnerable;
     private bool isInCooldown;
@@ -30,8 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+       
+
         reloadIndicator.SetActive(false);
         playerStats = DataDictionary.PlayerStats;
+        gameSettings = DataDictionary.GameSettings;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         blink = GetComponentInChildren<Blink>();
@@ -42,6 +46,10 @@ public class PlayerController : MonoBehaviour
         playerStats.PlayerHealth = playerStats.PlayerMaxHealth;
         bulletSpawner = GameObject.FindGameObjectWithTag("BulletSpawner");
         StartCoroutine(DustSpawner());
+
+        // disable attacking on level 0
+        playerStats.CanShoot = gameSettings.GameLevel > 0;
+
     }
 
     private void OnDestroy()
@@ -73,7 +81,7 @@ public class PlayerController : MonoBehaviour
         if (rolling || crouched) return;
 
         // shooting
-        if (Input.GetButton("Fire") && playerStats.AmmoCount > 0 && !isInCooldown)
+        if (Input.GetButton("Fire") && playerStats.AmmoCount > 0 && !isInCooldown && playerStats.CanShoot)
         {
             SFXManager.instance.PlayFire();
 

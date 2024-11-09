@@ -26,6 +26,7 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private float crouchRegeneration = 0f;
 
     [Header("Gun Stats")]
+    [SerializeField] private bool canShoot = false;
     [SerializeField] private int bulletCount = 4;
     [SerializeField] private float bulletSpread = 10;
     [SerializeField] private float bulletSpeed = 10;
@@ -54,6 +55,12 @@ public class PlayerStats : ScriptableObject
     public float PlayerSpeed
     {
         get { return playerSpeed; }
+    }
+
+    public bool CanShoot
+    {
+        get { return canShoot; }
+        set { canShoot = value; }
     }
 
     public float PlayerMaxHealth

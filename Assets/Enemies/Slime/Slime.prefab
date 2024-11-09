@@ -198,10 +198,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxTag: Enemy
   health: 3
-  cost: 1
+  corpse: {fileID: 5310734247314217954, guid: 58ccb2b9ab23d5746a2572bea4843fc0, type: 3}
+  cost: 1.5
   speed: 5
   hasHitstun: 1
   contactDamage: 1
+  aggression: 0.4
   jumpInterval: 2
   intervalMargin: 1
   speedDecay: 0.9

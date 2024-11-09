@@ -11,6 +11,7 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip kill;
     [SerializeField] private AudioClip collect;
+    [SerializeField] private AudioClip click;
 
     private void Awake()
     {
@@ -45,5 +46,10 @@ public class SFXManager : MonoBehaviour
     public void PlayCollect()
     {
         audioSource.PlayOneShot(collect);
+    }
+
+    public void PlayClick()
+    {
+        audioSource.PlayOneShot(click);
     }
 }

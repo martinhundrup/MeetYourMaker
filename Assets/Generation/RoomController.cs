@@ -11,7 +11,6 @@ public class RoomController : MonoBehaviour
     private int borderWidth;
     private int roomWidth;
     private int roomHeight;
-    private bool roomCleared = false;
     private int enemyCount = 0;
     [SerializeField] private GameObject endOfLevel;
 
@@ -30,16 +29,17 @@ public class RoomController : MonoBehaviour
         cameraBounder.transform.localScale = new Vector2(roomWidth - 4, roomHeight - 4);
     }
 
-    public void Generate()
+    public void CountEnemies()
     {
-        //Debug.Log("room generate");
-        //generator.Generate(_numTiles);
-        enemies = GetComponentsInChildren<Enemy>();
+        enemies = FindObjectsOfType<Enemy>();
+        enemyCount = 0;
 
-        foreach (Enemy enemy in enemies) 
+        foreach (Enemy enemy in enemies)
         {
             enemyCount++;
+
             enemy.OnEnemyDied += EnemyDeath;
+
         }
     }
 
@@ -49,12 +49,11 @@ public class RoomController : MonoBehaviour
         enemyCount--;
         _enemy.OnEnemyDied -= EnemyDeath;
 
-        if (enemyCount == 0)
+        if (enemyCount <= 0)
         {
             Debug.Log("room cleared!");
-            roomCleared = true;
 
-            Instantiate(endOfLevel);
+            Instantiate(endOfLevel).transform.position = _enemy.transform.position;
         }
     }
 }
