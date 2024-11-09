@@ -11,7 +11,6 @@ public class CentralGameManager : MonoBehaviour
 
     private void Awake()
     {
-        GetComponents();
         SubscribeGameEvents();
     }
 
@@ -35,11 +34,6 @@ public class CentralGameManager : MonoBehaviour
     }
 
     #region UTILITIES
-
-    private void GetComponents()
-    {
-        playerInventory = DataDictionary.PlayerInventory;
-    }
 
     private void SubscribeGameEvents()
     {

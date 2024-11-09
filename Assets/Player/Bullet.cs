@@ -5,27 +5,17 @@ using UnityEngine;
 [RequireComponent (typeof(Collider2D))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float angleRange = 0;
     private Rigidbody2D rb;
 
-    private void Awake()
+    public void Initialize(Vector2 start, Vector2 direction, int random, float speed)
     {
-       // GameStats.OnGameRestart += OnRestart;
-
         rb = GetComponent<Rigidbody2D>();
-        transform.position = GameObject.FindGameObjectWithTag("BulletSpawner").transform.position;
-        Debug.Log(transform.position);
-
-        // get mouse pos
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-
-        Vector3 direction = mousePosition - transform.position;
+        transform.position = start;
+       
         direction.Normalize();
 
         // Generate a random angle offset within the specified spread angle
-        float randomAngle = Random.Range(-angleRange, angleRange);
+        float randomAngle = Random.Range(-random, random);
         Vector3 spreadDirection = Quaternion.Euler(0, 0, randomAngle) * direction;
 
         rb.velocity = spreadDirection.normalized * speed;

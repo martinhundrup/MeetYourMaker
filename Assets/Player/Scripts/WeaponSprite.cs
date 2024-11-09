@@ -7,51 +7,53 @@ public class WeaponSprite : MonoBehaviour
     private PlayerController player;
     private SpriteRenderer sr;
     private Vector2 defaultPos;
-    private bool isAttacking = false;
+    private Vector2 defaultPointPos;
+    [SerializeField] private GameObject point;
 
     private void Awake()
     {
         defaultPos = transform.localPosition;
+        defaultPointPos = point.transform.localPosition;
         player = GetComponentInParent<PlayerController>();
         sr = GetComponent<SpriteRenderer>();
-
-        sr.sprite = DataDictionary.PlayerStats.EquipedWeapon.Sprite;
     }
 
     public void SpriteFlipX(bool flip)
     {
-        if (isAttacking) return;
         if (flip)
         {
             transform.localPosition = defaultPos * new Vector2(-1, 1);
-            sr.flipX = true;
+            point.transform.localPosition = defaultPointPos * new Vector2(-1, 1);
+
+            sr.flipX = false;
         }
         else
         {
+            point.transform.localPosition = defaultPointPos;
             transform.localPosition = defaultPos;
-            sr.flipX = false;
+            sr.flipX = true;
         }
     }
-    
-    public void Attack(float _time)
+
+    private void Update()
     {
-        StartCoroutine(AttackCoroutine(_time));
-    }
+        // Get the mouse position in world space
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0; // Set Z to 0 if you're working in a 2D space
 
-    private IEnumerator AttackCoroutine(float _time)
-    {
-        var pos = transform.localPosition;
-        transform.localPosition = pos * new Vector2(-1, 1);
-        sr.flipY = true;
-        sr.flipX = !sr.flipX;
-        isAttacking = true;
+        // Calculate the direction from the object to the mouse
+        Vector3 direction = mousePosition - transform.position;
 
-        yield return new WaitForSeconds(_time);
+        // Calculate the angle in degrees and rotate the object to face the mouse
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Rotate away from the mouse if the sprite is flipped
+        if (sr.flipX)
+        {
+            angle += 180;
+        }
 
-        sr.flipY = false;
-        sr.flipX = !sr.flipX;
-        transform.localPosition = pos;
-        isAttacking = false;
+        // Apply the rotation
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
 }

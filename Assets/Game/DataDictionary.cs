@@ -8,7 +8,7 @@ public class DataDictionary : MonoBehaviour
 
     private PlayerStats playerStats;
     private GameSettings gameSettings;
-    private InventoryData playerInventory;
+    //private InventoryData playerInventory;
 
     private void Initialize()
     {
@@ -24,11 +24,11 @@ public class DataDictionary : MonoBehaviour
             Debug.LogError("Game Settings not found in Resources folder.");
         }
 
-        playerInventory = Resources.Load<InventoryData>("Player Inventory");
-        if (playerInventory == null)
-        {
-            Debug.LogError("Player Inventory not found in Resources folder.");
-        }
+        //playerInventory = Resources.Load<InventoryData>("Player Inventory");
+        //if (playerInventory == null)
+        //{
+        //    Debug.LogError("Player Inventory not found in Resources folder.");
+        //}
 
     }
 
@@ -58,17 +58,17 @@ public class DataDictionary : MonoBehaviour
         }
     }
 
-    public static InventoryData PlayerInventory
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new GameObject("DataDictionaryManager").AddComponent<DataDictionary>();
-                instance.Initialize();
-            }
-            return instance.playerInventory;
-        }
-    }
+    //public static InventoryData PlayerInventory
+    //{
+    //    get
+    //    {
+    //        if (instance == null)
+    //        {
+    //            instance = new GameObject("DataDictionaryManager").AddComponent<DataDictionary>();
+    //            instance.Initialize();
+    //        }
+    //        return instance.playerInventory;
+    //    }
+    //}
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -9,7 +10,6 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private Animator animator;
 
-    private SwingEffect swingEffect;
     private WeaponSprite weaponSprite;
     private Vector2 facingDirection; // the direction of the cursor relative to shroomie
 
@@ -23,20 +23,23 @@ public class PlayerController : MonoBehaviour
     private bool crouched = false;
     private bool rolling = false;
     [SerializeField] private GameObject dust;
+    private GameObject bulletSpawner;
+    [SerializeField] private GameObject reloadIndicator;
+    [SerializeField] private GameObject reloadProgress;
 
     private void Awake()
     {
+        reloadIndicator.SetActive(false);
         playerStats = DataDictionary.PlayerStats;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         blink = GetComponentInChildren<Blink>();
         animator = GetComponentInChildren<Animator>();
-        swingEffect = GetComponentInChildren<SwingEffect>();
         weaponSprite = GetComponentInChildren<WeaponSprite>();
         GameEvents.OnGamePaused += SetAcceptingInput;
         // for now, heal player on awake
         playerStats.PlayerHealth = playerStats.PlayerMaxHealth;
-
+        bulletSpawner = GameObject.FindGameObjectWithTag("BulletSpawner");
         StartCoroutine(DustSpawner());
     }
 
@@ -53,6 +56,10 @@ public class PlayerController : MonoBehaviour
         Attack();
         Crouch();
         Roll();
+
+#if UNITY_EDITOR
+        Debug.DrawLine(bulletSpawner.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), UnityEngine.Color.red);
+#endif
     }
 
     private void SetAcceptingInput(bool _input)
@@ -62,16 +69,28 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (rolling) return;
+        if (rolling || crouched) return;
 
-        if (Input.GetMouseButton(0) && !isInCooldown && acceptingInput && !crouched) 
+        // shooting
+        if (Input.GetButton("Fire") && playerStats.AmmoCount > 0 && !isInCooldown)
         {
-            float attackTime = playerStats.EquipedWeapon.Duration;
-            swingEffect.Swing(playerStats.EquipedWeapon); // in charge of hitbox
-            weaponSprite.Attack(attackTime);
+            SFXManager.instance.PlayFire();
 
-            float cooldown = playerStats.EquipedWeapon.Cooldown;
-            StartCoroutine(CooldownTimer(cooldown));
+            // Get the mouse position in world space
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0; // Set Z to 0 if you're working in a 2D space
+
+            // Calculate the direction from the object to the mouse
+            Vector3 direction = mousePosition - transform.position;
+
+            for (int i = 0; i < playerStats.BulletCount; i++)
+            {
+                var obj = Instantiate(playerStats.Bullet);
+                obj.GetComponent<Bullet>().Initialize(bulletSpawner.transform.position, direction, playerStats.BulletSpread, playerStats.BulletSpeed);
+            }
+
+            playerStats.AmmoCount--;
+            StartCoroutine(CooldownTimer(playerStats.RecoilTime));
         }
     }
 
@@ -193,13 +212,22 @@ public class PlayerController : MonoBehaviour
         blink.StopBlinking();
     }
 
+    // reload
     private IEnumerator CooldownTimer(float _time)
     {
         isInCooldown = true;
+        reloadIndicator.SetActive(true);
 
-        yield return new WaitForSeconds(_time);
+        float remainingTime = 0;
+        while (remainingTime < _time)
+        {
+            remainingTime += Time.deltaTime;
+            reloadProgress.transform.localScale = new Vector2(remainingTime / _time, 1f);
+            yield return null;
+        }
 
         isInCooldown = false;
+        reloadIndicator.SetActive(false);
     }
 
     private IEnumerator DustSpawner()

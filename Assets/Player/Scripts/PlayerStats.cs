@@ -14,7 +14,12 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private float playerHealth; // current health
     [SerializeField] private float rollSpeed;
     [SerializeField] private float rollDuration;
-    [SerializeField] private WeaponData equipedWeapon;
+    [SerializeField] private int bulletCount;
+    [SerializeField] private int bulletSpread;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private int ammoCount;
+    [SerializeField] private float bulletSpeed;
+    [SerializeField] private float recoilTime;
 
     #region PROPERTIES
     public float RollDuration
@@ -46,9 +51,40 @@ public class PlayerStats : ScriptableObject
                 OnDamageTaken();
         }
     }
-    public WeaponData EquipedWeapon 
+
+    public int BulletCount
     {
-        get { return equipedWeapon; }
+        get { return bulletCount; }
+        set { bulletCount = value; }
+    }
+
+    public int BulletSpread
+    {
+        get { return bulletSpread; }
+        set { bulletSpread = value; }
+    }
+
+    public GameObject Bullet
+    {
+        get { return bullet; }
+    }
+
+    public int AmmoCount
+    {
+        get { return ammoCount; }
+        set { ammoCount = value; }
+    }
+
+    public float BulletSpeed
+    {
+        get { return bulletSpeed; }
+        set { bulletSpeed = value; }
+    }
+
+    public float RecoilTime
+    {
+        get { return  recoilTime; }
+        set { recoilTime = value; }
     }
 
     #endregion

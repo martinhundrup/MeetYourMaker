@@ -13,7 +13,6 @@ public class Breakable : MonoBehaviour
     private float maxHealth;
     protected Blink blink;
     protected HealthBar healthBar;
-    [SerializeField] private ItemData drop;
 
     protected void Awake()
     {
@@ -61,10 +60,7 @@ public class Breakable : MonoBehaviour
     private void CheckHealth()
     {
         if (health <= 0) 
-        {
-            var obj = new GameObject().AddComponent<ItemDrop>();
-            obj.transform.position = transform.position;
-            obj.Init(drop);            
+        {        
             
             Destroy(this.gameObject); 
         }
