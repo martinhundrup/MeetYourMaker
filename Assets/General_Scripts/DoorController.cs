@@ -11,7 +11,6 @@ public class DoorController : MonoBehaviour
     private void Awake()
     {
         roomController = GetComponentInParent<RoomController>();
-        roomController.OnPlayerEnteredRoom += PlayerEnter;
 
         _collider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();

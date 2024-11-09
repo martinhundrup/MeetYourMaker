@@ -41,10 +41,10 @@ public class DungeonGenerator : MonoBehaviour
         obstacleTiles = new int[roomWidth * roomHeight];
         roomTilesList = new List<int>();
 
-        //Generate(numberOfTiles, true, true, true, true);
+        Generate(numberOfTiles);
     }
 
-    public void Generate(int _numTiles, bool up, bool down, bool left, bool right)
+    public void Generate(int _numTiles)
     {
         this.numberOfTiles = _numTiles;
         if (numberOfTiles > (roomWidth - (roomWidth * 2)) * (roomHeight - (roomWidth * 2))) return; // Ensure numberOfTiles is valid
@@ -54,13 +54,10 @@ public class DungeonGenerator : MonoBehaviour
         PlaceObstacles();
         PlaceEnemies();
 
-        SetTopDoorway(up);
-        SetRightDoorway(right);
-        SetBottomDoorway(down);
-        SetLeftDoorway(left);
-
         DrawRoomTiles();
         DrawObstacles();
+
+        GetComponent<RoomController>().Generate();
     }
 
     private void InitRoomTiles()
@@ -112,126 +109,6 @@ public class DungeonGenerator : MonoBehaviour
 
         var ob = Instantiate(enemy, transform);
         ob.transform.localPosition = new Vector2(x + 0.5f, y + 0.5f);
-    }
-
-    private void SetTopDoorway(bool doorway)
-    {
-        if (doorway)
-        {
-            bool done = false;
-            int index = roomWidth / 2;
-            obstacleTiles[index] = 0;
-            while (!done)
-            {
-                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                roomTiles[index] = 1;
-                index += roomWidth;
-                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                done = roomTiles[index] != 0;
-                obstacleTiles[index] = 0;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < roomWidth; i++)
-            {
-                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x;
-                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y - 1;
-
-                Vector3Int tilePosition = new Vector3Int(x, y, 0);
-                topTilemap.SetTile(tilePosition, topTile);
-            }
-        }
-    }
-
-    private void SetBottomDoorway(bool doorway)
-    {
-        if (doorway)
-        {
-            bool done = false;
-            int index = roomTiles.Length - 1 - roomWidth / 2;
-            obstacleTiles[index] = 0;
-            while (!done)
-            {
-                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                roomTiles[index] = 1;
-                index -= roomWidth;
-                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                done = roomTiles[index] != 0;
-                obstacleTiles[index] = 0;
-            }
-        }
-        else
-        {
-            for (int i = (roomWidth * roomHeight - roomWidth); i < roomWidth * roomHeight; i++)
-            {
-                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x;
-                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y + 1;
-
-                Vector3Int tilePosition = new Vector3Int(x, y, 0);
-                topTilemap.SetTile(tilePosition, topTile);
-            }
-        }
-    }
-
-    private void SetLeftDoorway(bool doorway)
-    {
-        if (doorway)
-        {
-            bool done = false;
-            int index = roomWidth * (roomHeight / 2);
-            obstacleTiles[index] = 0;
-            while (!done)
-            {
-                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                roomTiles[index] = 1;
-                index++;
-                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                done = roomTiles[index] != 0;
-                obstacleTiles[index] = 0;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < roomHeight * roomWidth; i += roomWidth)
-            {
-                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x - 1;
-                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y;
-
-                Vector3Int tilePosition = new Vector3Int(x, y, 0);
-                topTilemap.SetTile(tilePosition, topTile);
-            }
-        }
-    }
-
-    private void SetRightDoorway(bool doorway)
-    {
-        if (doorway)
-        {
-            bool done = false;
-            int index = roomWidth * (1 + roomHeight / 2) - 1;
-            obstacleTiles[index] = 0;
-            while (!done)
-            {
-                if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                roomTiles[index] = 1;
-                index--;
-                //if (roomTilesList.Contains(index)) roomTilesList.Remove(index);
-                done = roomTiles[index] != 0;
-                obstacleTiles[index] = 0;
-            }
-        }
-        else
-        {
-            for (int i = roomWidth - 1; i < roomHeight * roomWidth; i += roomWidth)
-            {
-                int x = (int)ConvertToWorldPosition(i).x + (int)this.transform.localPosition.x + 1;
-                int y = (int)ConvertToWorldPosition(i).y + (int)this.transform.localPosition.y;
-
-                Vector3Int tilePosition = new Vector3Int(x, y, 0);
-                topTilemap.SetTile(tilePosition, topTile);
-            }
-        }
     }
 
     public void PlaceExit()
@@ -338,7 +215,7 @@ public class DungeonGenerator : MonoBehaviour
                         ob.transform.localPosition = new Vector2(x + 0.5f, y + 1f);
                     }
                 }
-                else
+                else if (UnityEngine.Random.Range(1, 101) < 50) // 75% chance to place actual object
                 {
                     var ob = Instantiate(obstacles[obstacleTiles[i] - 1].ObstaclePrefab, transform);
                     ob.transform.localPosition = new Vector2(x + 0.5f, y + 0.5f);

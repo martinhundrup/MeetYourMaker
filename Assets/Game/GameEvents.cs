@@ -8,6 +8,7 @@ public static class GameEvents
     public static event Action<Transform> OnPlayerEnterRoom;
     public static event Action<ItemData> OnItemPickedUp;
     public static event Action<bool> OnGamePaused;
+    public static event Action OnLevelEnd;
 
     public static void PlayerEnterRoom(Transform roomBounder)
     {
@@ -20,5 +21,10 @@ public static class GameEvents
     public static void GamePaused(bool _paused) 
     {
         OnGamePaused?.Invoke(_paused); 
+    }
+
+    public static void LevelEnd()
+    {
+        OnLevelEnd?.Invoke();
     }
 }

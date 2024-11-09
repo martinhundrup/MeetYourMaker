@@ -21,6 +21,7 @@ public class Hitbox : MonoBehaviour
     public float Damage
     {
         get { return damage; }
+        set { damage = value; }
     }
 
     public string HitboxTag
@@ -31,11 +32,13 @@ public class Hitbox : MonoBehaviour
     public float KnockbackForce
     {
         get { return this.knockbackForce; }
+        set { this.knockbackForce = value; }
     }
 
     public float StunTime
     {
         get { return this.stunTime; }
+        set { this.stunTime = value; }
     }
     #endregion
 }

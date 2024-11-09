@@ -7,6 +7,9 @@ TagManager:
   - BulletSpawner
   - Obstacle
   - Enemy
+  - Top Tilemap
+  - Wall Tilemap
+  - Shadow Tilemap
   layers:
   - Default
   - TransparentFX

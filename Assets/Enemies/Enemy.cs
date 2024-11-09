@@ -49,12 +49,11 @@ public abstract class Enemy : Breakable
 
     protected override void TakeDamage(Hitbox _hitbox)
     {
-        if (!isInHitstun && !isInvulnerable) // extra check for enemies
-        {
-            StartCoroutine(HitStun(_hitbox));
-            StartCoroutine(MakeInvulnerable());
-            base.TakeDamage(_hitbox);
-        }
+
+        StartCoroutine(HitStun(_hitbox));
+        //StartCoroutine(MakeInvulnerable()); // remove invulnerbility so multiple bullets can hit
+        base.TakeDamage(_hitbox);
+
     }
 
     // Temporarily pauses the enemy when hit.

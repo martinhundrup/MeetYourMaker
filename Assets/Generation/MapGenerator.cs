@@ -151,16 +151,10 @@ public class MapGenerator : MonoBehaviour
             x.transform.position = ConvertToWorldPosition(room);
 
 
-            // determine where neighboring rooms are
-            bool up = room - mapSize > 0 && roomTiles[room - mapSize] != 0;
-            bool down = room + mapSize < roomTiles.Length && roomTiles[room + mapSize] != 0;
-            bool left = room - 1 > 0 && roomTiles[room - 1] != 0;
-            bool right = room + 1 < roomTiles.Length && roomTiles[room + 1] != 0;
-
             int numTiles = roomWidth * roomHeight - (roomHeight * (roomBorder * 2) + roomWidth * (roomBorder * 2));
 
-            x.GetComponent<RoomController>().
-                Generate(UnityEngine.Random.Range((int)(numTiles * 0.6f), (int)(numTiles * 0.8f)), up, down, left, right);
+            //x.GetComponent<RoomController>().
+            //    Generate(UnityEngine.Random.Range((int)(numTiles * 0.6f), (int)(numTiles * 0.8f)));
 
             if (room == furthestRoomIndex)
             {

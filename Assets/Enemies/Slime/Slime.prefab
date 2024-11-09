@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1701134109
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.1764706, g: 0.12941177, b: 0.18039216, a: 0.7058824}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 907188067786246030}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxTag: Enemy
   health: 3
-  drop: {fileID: 11400000, guid: 98083cb0f01849e49a7d0fb150628042, type: 2}
   cost: 1
   speed: 5
   hasHitstun: 1
@@ -245,7 +244,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1701134109
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -273686560868946368, guid: f6da71d37d2801c4092bbb97e64ec667, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

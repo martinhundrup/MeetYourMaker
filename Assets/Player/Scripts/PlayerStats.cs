@@ -9,23 +9,43 @@ public class PlayerStats : ScriptableObject
     public delegate void DamageTakenAction();
     public event DamageTakenAction OnDamageTaken;
 
-    [SerializeField] private float playerSpeed;
-    [SerializeField] private float playerMaxHealth;
-    [SerializeField] private float playerHealth; // current health
-    [SerializeField] private float rollSpeed;
-    [SerializeField] private float rollDuration;
-    [SerializeField] private int bulletCount;
-    [SerializeField] private int bulletSpread;
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private int ammoCount;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private float recoilTime;
+    [Header("Player stuff")]
+    [SerializeField] private float playerSpeed = 5;
+    [SerializeField] private float playerMaxHealth = 5;
+    [SerializeField] private float playerHealth = 5; // current health
+    [SerializeField] private int ammoCount = 10;
+    [SerializeField] private int maxAmmo = 10;
+
+    [Header("Roll stuff")]
+    [SerializeField] private bool hasRoll = false;
+    [SerializeField] private float rollSpeed = 8;
+    [SerializeField] private float rollDuration = 0.4f;
+
+    [Header("Crouch Stuff")]
+    [SerializeField] private bool hasCrouch = false;
+    [SerializeField] private float crouchRegeneration = 0f;
+
+    [Header("Gun Stats")]
+    [SerializeField] private int bulletCount = 4;
+    [SerializeField] private float bulletSpread = 10;
+    [SerializeField] private float bulletSpeed = 10;
+    [SerializeField] private float reloadTime = 1f;
+
+    [Header("Bullet Stats")]
+    [SerializeField] private GameObject bullet = null;
+    [SerializeField] private float bulletDamage = 1f;
+    [SerializeField] private float bulletSize = 1f;
+    [SerializeField] private float knockbackForce = 0f;
+    [SerializeField] private float stunTime = 0f;
+    [SerializeField] private bool piercing = false;
+    [SerializeField] private bool bounces = false;
 
     #region PROPERTIES
     public float RollDuration
     {
         get { return rollDuration; }
     }
+
     public float RollSpeed
     {
         get { return rollSpeed; }
@@ -40,16 +60,42 @@ public class PlayerStats : ScriptableObject
     {
         get { return playerMaxHealth; }
     }
+
     public float PlayerHealth
     {
         get { return playerHealth; }
-        set 
-        { 
-            playerHealth = value; 
-            playerHealth = Mathf.Clamp(playerHealth, 0f, playerMaxHealth);
+        set
+        {
+            playerHealth = Mathf.Clamp(value, 0f, playerMaxHealth);
             if (OnDamageTaken != null)
                 OnDamageTaken();
         }
+    }
+
+    public int AmmoCount
+    {
+        get { return ammoCount; }
+        set { ammoCount = value; }
+    }
+
+    public int MaxAmmo
+    {
+        get { return maxAmmo; }
+    }
+
+    public bool HasRoll
+    {
+        get { return hasRoll; }
+    }
+
+    public bool HasCrouch
+    {
+        get { return hasCrouch; }
+    }
+
+    public float CrouchRegeneration
+    {
+        get { return crouchRegeneration; }
     }
 
     public int BulletCount
@@ -58,7 +104,7 @@ public class PlayerStats : ScriptableObject
         set { bulletCount = value; }
     }
 
-    public int BulletSpread
+    public float BulletSpread
     {
         get { return bulletSpread; }
         set { bulletSpread = value; }
@@ -69,22 +115,52 @@ public class PlayerStats : ScriptableObject
         get { return bullet; }
     }
 
-    public int AmmoCount
-    {
-        get { return ammoCount; }
-        set { ammoCount = value; }
-    }
-
     public float BulletSpeed
     {
         get { return bulletSpeed; }
         set { bulletSpeed = value; }
     }
 
-    public float RecoilTime
+    public float ReloadTime
     {
-        get { return  recoilTime; }
-        set { recoilTime = value; }
+        get { return reloadTime; }
+        set { reloadTime = value; }
+    }
+
+    public float BulletDamage
+    {
+        get { return bulletDamage; }
+        set { bulletDamage = value; }
+    }
+
+    public float BulletSize
+    {
+        get { return bulletSize; }
+        set { bulletSize = value; }
+    }
+
+    public bool Piercing
+    {
+        get { return piercing; }
+        set { piercing = value; }
+    }
+
+    public bool Bounces
+    {
+        get { return bounces; }
+        set { bounces = value; }
+    }
+
+    public float KnockbackForce
+    {
+        get { return knockbackForce; }
+        set { knockbackForce = value; }
+    }
+
+    public float StunTime
+    {
+        get { return stunTime; }
+        set {  stunTime = value; }
     }
 
     #endregion

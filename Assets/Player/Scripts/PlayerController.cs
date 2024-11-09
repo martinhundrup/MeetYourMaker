@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private GameObject bulletSpawner;
     [SerializeField] private GameObject reloadIndicator;
     [SerializeField] private GameObject reloadProgress;
+    [SerializeField] private SpriteRenderer shadow;
 
     private void Awake()
     {
@@ -86,11 +87,11 @@ public class PlayerController : MonoBehaviour
             for (int i = 0; i < playerStats.BulletCount; i++)
             {
                 var obj = Instantiate(playerStats.Bullet);
-                obj.GetComponent<Bullet>().Initialize(bulletSpawner.transform.position, direction, playerStats.BulletSpread, playerStats.BulletSpeed);
+                obj.GetComponent<Bullet>().Initialize(bulletSpawner.transform.position, direction, true);
             }
 
             playerStats.AmmoCount--;
-            StartCoroutine(CooldownTimer(playerStats.RecoilTime));
+            StartCoroutine(CooldownTimer(playerStats.ReloadTime));
         }
     }
 
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     private void Crouch()
     {
-        if (rolling) return;
+        if (rolling || !playerStats.HasCrouch) return;
         if (acceptingInput && Input.GetButtonDown("Crouch"))
         {
             crouched = true;
@@ -150,7 +151,8 @@ public class PlayerController : MonoBehaviour
     
     private void Roll()
     {
-        if (!rolling && acceptingInput && Input.GetButtonDown("Roll") && !crouched && !(inputX == 0f && inputY == 0f))
+        if (!rolling && acceptingInput && Input.GetButtonDown("Roll") && !crouched && !(inputX == 0f && inputY == 0f) 
+            && playerStats.HasRoll)
         {
             Debug.Log("roll");
             StartCoroutine(_Roll());
@@ -168,6 +170,7 @@ public class PlayerController : MonoBehaviour
         var movementVect = new Vector2(inputX, inputY).normalized * playerStats.RollSpeed;
 
         yield return new WaitForSeconds(0.2f); // wait for animtion to play before invisible
+        shadow.enabled = false;
         sr.enabled = false;
         gameObject.layer = 6; // roll layer
 
@@ -182,6 +185,7 @@ public class PlayerController : MonoBehaviour
         gameObject.layer = 0; // default
         weaponSprite.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(0.2f); // wait for animtion to play before invisible
+        shadow.enabled = true;
 
         rolling = false;
     }
