@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b0f2753a1fed04b816cf3ead033692, type: 3}
   m_Name: Tree Generator
   m_EditorClassIdentifier: 
-  threshold: 0.65
+  threshold: 0.7
   scale: 0.25
   obstaclePrefab: {fileID: 6322441848640302149, guid: 97e1db6597dbf6247b244af2df3e658a, type: 3}
   decorPrefab: {fileID: 6322441848640302149, guid: c5ee6991b5eb7a24c9c0c6168bd4b787, type: 3}

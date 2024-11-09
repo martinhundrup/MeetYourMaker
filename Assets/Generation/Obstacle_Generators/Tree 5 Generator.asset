@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b0f2753a1fed04b816cf3ead033692, type: 3}
+  m_Name: Tree 5 Generator
+  m_EditorClassIdentifier: 
+  threshold: 0.7
+  scale: 0.25
+  obstaclePrefab: {fileID: 6322441848640302149, guid: b1c299d2680ffff4990bda9b3c269fe6, type: 3}
+  decorPrefab: {fileID: 6322441848640302149, guid: edae086e7e9c70449945a821ace64da4, type: 3}

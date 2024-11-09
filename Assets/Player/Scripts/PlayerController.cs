@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (rolling || crouched) return;
+        if (rolling || crouched || !acceptingInput) return;
 
         // shooting
         if (Input.GetButton("Fire") && playerStats.AmmoCount > 0 && !isInCooldown && playerStats.CanShoot)
@@ -209,6 +209,7 @@ public class PlayerController : MonoBehaviour
             if (playerStats.PlayerHealth == 0)
             {
                 Debug.LogError("Shroomie died!");
+                animator.Play("Death");
             }
         }        
     }

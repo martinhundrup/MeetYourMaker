@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   playerMaxHealth: 10
-  playerHealth: 10
-  ammoCount: 9425
+  playerHealth: 0
+  ammoCount: 8657
   maxAmmo: 10
   hasRoll: 0
   rollSpeed: 8
   rollDuration: 0.3
   hasCrouch: 0
   crouchRegeneration: 0
+  canShoot: 0
   bulletCount: 6
   bulletSpread: 10
   bulletSpeed: 10
