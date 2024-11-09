@@ -24,7 +24,7 @@ public class EnemyGenerator : ScriptableObject
     private void CalculateBalance()
     {
         int gameLevel = DataDictionary.GameSettings.GameLevel;
-        balance = 2 + gameLevel * 2 + UnityEngine.Random.Range(-gameLevel, gameLevel);
+        balance = 2 + gameLevel * 1.1f + UnityEngine.Random.Range(-gameLevel, gameLevel);
     }
 
     private GameObject GetRandomEnemy()

@@ -18,6 +18,9 @@ public class CentralGameManager : MonoBehaviour
     [SerializeField] private SceneField level1;
     [SerializeField] private SceneField level2;
     [SerializeField] private SceneField level3; 
+    [SerializeField] private SceneField level4; 
+    [SerializeField] private SceneField level5;
+    [SerializeField] private SceneField level6;
 
     private void Awake()
     {
@@ -78,9 +81,21 @@ public class CentralGameManager : MonoBehaviour
         {
             SceneManager.LoadScene(level2.BuildIndex);
         }
-        else // rest are level 3
+        else if (gameSettings.GameLevel <= 15)
         {
             SceneManager.LoadScene(level3.BuildIndex);
+        }
+        else if (gameSettings.GameLevel <= 20)
+        {
+            SceneManager.LoadScene(level4.BuildIndex);
+        }
+        else if (gameSettings.GameLevel <= 25)
+        {
+            SceneManager.LoadScene(level5.BuildIndex);
+        }
+        else // rest of game
+        {
+            SceneManager.LoadScene(level6.BuildIndex);
         }
     }
 

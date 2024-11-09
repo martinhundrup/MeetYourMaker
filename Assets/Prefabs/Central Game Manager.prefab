@@ -52,16 +52,30 @@ MonoBehaviour:
   level1:
     _sceneOB: {fileID: 102900000, guid: 85bc503ceff95864f90bdc64b97bdd43, type: 3}
     _name: Level 1
-    _path: 
-    _buildIndex: -1
+    _path: Assets/Scenes/Level 1.unity
+    _buildIndex: 2
   level2:
-    _sceneOB: {fileID: 0}
-    _name: 
-    _path: 
-    _buildIndex: 0
+    _sceneOB: {fileID: 102900000, guid: f10c3830320bf5f43a19a74f600351f8, type: 3}
+    _name: Level 2
+    _path: Assets/Scenes/Level 2.unity
+    _buildIndex: 3
   level3:
+    _sceneOB: {fileID: 102900000, guid: acaed7a9af113e24e8ad0662877c5884, type: 3}
+    _name: Level 3
+    _path: Assets/Scenes/Level 3.unity
+    _buildIndex: 4
+  level4:
+    _sceneOB: {fileID: 102900000, guid: 33993ddec9d5144488ad8b10ac304e39, type: 3}
+    _name: Level 4
+    _path: Assets/Scenes/Level 4.unity
+    _buildIndex: 5
+  level5:
+    _sceneOB: {fileID: 102900000, guid: 1b7731eb5925d244ea1eff4ffdac7985, type: 3}
+    _name: Level 5
+    _path: Assets/Scenes/Level 5.unity
+    _buildIndex: 6
+  level6:
     _sceneOB: {fileID: 0}
     _name: 
     _path: 
     _buildIndex: 0
-  lvlIndex: 0

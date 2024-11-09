@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cfe8a91577794e448f6626a761cdedd, type: 3}
-  m_Name: level 3 enemies
+  m_Name: level 4 enemies
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 8456545713432222802, guid: 1916c907f5333ea48b6c274ad0f5f25c, type: 3}
-  - {fileID: 5310734247314217954, guid: df65e84d777f347409d3d52906f7c202, type: 3}
   - {fileID: 5310734247314217954, guid: b4b1838e9200dca49a485bfe8794ac8a, type: 3}
   - {fileID: 5310734247314217954, guid: 3cdf6a8d4fb27c74e898001bc995e672, type: 3}
-  - {fileID: 5310734247314217954, guid: 0afd63991e1d8fe4397a9178bf88e221, type: 3}
   - {fileID: 8456545713432222802, guid: e2132c41c8a03214a8f71102e924a857, type: 3}
   - {fileID: 5310734247314217954, guid: e72887bb1b9d57d4b8bab41428eb1ce8, type: 3}

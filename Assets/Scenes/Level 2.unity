@@ -179,7 +179,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8dccf76a6adf5c240b0110d8be5b422d, type: 2}
   - {fileID: 11400000, guid: 505ddbf0ba6c15c408fe2c4e084f19da, type: 2}
   enemies:
-  - {fileID: 11400000, guid: 3124364915526b94591512f36a5e0e38, type: 2}
+  - {fileID: 11400000, guid: 4d1d327282ff3da4db459f1bed79d03d, type: 2}
   dungeonExit: {fileID: 682478617919081182, guid: 9719ab485a8693c4ba4b187ae396d94e, type: 3}
 --- !u!4 &12908797
 Transform:

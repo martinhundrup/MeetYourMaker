@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 3233358023832187699}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.375, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.4, z: 1}
+  m_LocalPosition: {x: 0, y: -0.1875, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2445949832554024798}
@@ -95,11 +95,11 @@ GameObject:
   - component: {fileID: 2445949832554024798}
   - component: {fileID: 1012270065102905642}
   - component: {fileID: 3454664371136654100}
+  - component: {fileID: 6950479392948835969}
   - component: {fileID: 2783732321847793484}
   - component: {fileID: 907188067786246030}
-  - component: {fileID: 388868230216900423}
   m_Layer: 0
-  m_Name: Zombie
+  m_Name: Giant Slime 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,8 +114,8 @@ Transform:
   m_GameObject: {fileID: 5310734247314217954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.6875, y: -0.9375, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3315016732466662056}
@@ -134,11 +134,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 29a56645f0678cc4088dfbba04a7bcd2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -158,7 +158,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5310734247314217954}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 29a56645f0678cc4088dfbba04a7bcd2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -184,6 +184,29 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!114 &6950479392948835969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5310734247314217954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fdc9dd8ba92b14b998f5020b0979a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxTag: Enemy
+  health: 30
+  corpse: {fileID: 5310734247314217954, guid: b4b1838e9200dca49a485bfe8794ac8a, type: 3}
+  cost: 8
+  speed: 5
+  hasHitstun: 1
+  contactDamage: 3
+  aggression: 0.8
+  jumpInterval: 1.5
+  intervalMargin: 0.5
+  speedDecay: 0.9
 --- !u!212 &2783732321847793484
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -222,11 +245,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1701134109
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -846553189742763479, guid: b84ccf4ae00ae674d8e00c002e58d001, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -273686560868946368, guid: f6da71d37d2801c4092bbb97e64ec667, type: 3}
+  m_Color: {r: 0.56078434, g: 0.827451, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -246,7 +269,7 @@ Animator:
   m_GameObject: {fileID: 5310734247314217954}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 3103023584858754294, guid: b84ccf4ae00ae674d8e00c002e58d001, type: 3}
+  m_Controller: {fileID: 8498372819010139901, guid: f6da71d37d2801c4092bbb97e64ec667, type: 3}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -257,28 +280,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &388868230216900423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5310734247314217954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5a2b5114ff75147a3cc7094147e1ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitboxTag: Enemy
-  health: 5
-  corpse: {fileID: 6539512322366972734, guid: 04fbde6edf47dda4baa5c063f03babe7, type: 3}
-  cost: 2
-  speed: 2
-  hasHitstun: 0
-  contactDamage: 1.5
-  aggression: 0.7
-  jumpInterval: 2
-  intervalMargin: 1
 --- !u!1001 &1870418661747485807
 PrefabInstance:
   m_ObjectHideFlags: 0

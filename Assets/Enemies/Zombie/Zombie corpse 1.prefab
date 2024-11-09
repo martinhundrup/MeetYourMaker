@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 1399805316593272990}
   - component: {fileID: 5464724151294001234}
   m_Layer: 0
-  m_Name: Zombie corpse
+  m_Name: Zombie corpse 1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

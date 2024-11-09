@@ -14,21 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   playerMaxHealth: 10
-  playerHealth: 0
-  ammoCount: 8657
+  playerHealth: 10
+  ammoCount: 5920
   maxAmmo: 10
   hasRoll: 0
   rollSpeed: 8
   rollDuration: 0.3
   hasCrouch: 0
   crouchRegeneration: 0
-  canShoot: 0
+  canShoot: 1
   bulletCount: 6
   bulletSpread: 10
   bulletSpeed: 10
-  reloadTime: 1
+  reloadTime: 0.6
   bullet: {fileID: 5134309796571233652, guid: cde5ab9fdfc8f4d43b15a896aec22d1f, type: 3}
-  bulletDamage: 0.2
+  bulletDamage: 0.5
   bulletSize: 1
   knockbackForce: 0.1
   stunTime: 0
