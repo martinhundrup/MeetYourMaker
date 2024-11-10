@@ -66,7 +66,7 @@ public class PlayerStats : ScriptableObject
         get { return playerSpeed; }
     }
 
-    public bool CanShoot
+    public bool UsesAmmo
     {
         get { return canShoot; }
         set { canShoot = value; }
@@ -191,8 +191,8 @@ public class PlayerStats : ScriptableObject
     public void Respawn()
     {
         playerHealth = playerMaxHealth;
-        ammoCount = 20;
-        exp = 0;
+        ammoCount = 30;
+        //exp = 0; // don't reset exp
         OnDamageTaken?.Invoke();
     }
     public void ResetDefaults()
@@ -200,7 +200,7 @@ public class PlayerStats : ScriptableObject
         playerSpeed = 5f;
         playerMaxHealth = 5f;
         playerHealth = 5f;
-        ammoCount = 20;
+        ammoCount = 30;
         maxAmmo = 50;
         exp = 0;
         hasRoll = false;
@@ -209,11 +209,11 @@ public class PlayerStats : ScriptableObject
         hasCrouch = false;
         crouchRegeneration = 0.1f; // 10% max health regen a sec
         canShoot = true;
-        bulletCount = 4;
+        bulletCount = 5;
         bulletSpread = 10f;
         bulletSpeed = 10f;
-        reloadTime = 1f;
-        bulletDamage = 0.2f;
+        reloadTime = .8f;
+        bulletDamage = 4f;
         bulletSize = 1f;
         knockbackForce = 0.1f;
         stunTime = 0.1f;

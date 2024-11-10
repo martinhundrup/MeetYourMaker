@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NPC : MonoBehaviour
+public class NPC : Enemy
 {
     [SerializeField] private GameObject bubble;
     [SerializeField] private TypewriterEffect typewriter;
@@ -12,8 +12,9 @@ public class NPC : MonoBehaviour
     private PlayerController player;
     private bool isInRange = false;
 
-    private void Awake()
+    new private void Awake()
     {
+        base.Awake();
         bubble.SetActive(false);
         player = FindObjectOfType<PlayerController>();
     }

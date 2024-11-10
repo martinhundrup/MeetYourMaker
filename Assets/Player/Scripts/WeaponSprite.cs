@@ -9,17 +9,19 @@ public class WeaponSprite : MonoBehaviour
     private Vector2 defaultPos;
     private Vector2 defaultPointPos;
     [SerializeField] private GameObject point;
+    [SerializeField] private bool targetsPlayer = false; // is this an enemy weapon?
+    [SerializeField] private SpriteRenderer parentRenderer;
 
     private void Awake()
     {
         defaultPos = transform.localPosition;
         defaultPointPos = point.transform.localPosition;
-        player = GetComponentInParent<PlayerController>();
+        player = FindObjectOfType<PlayerController>();
         sr = GetComponent<SpriteRenderer>();
     }
 
     public void SpriteFlipX(bool flip)
-    {
+    {        
         if (flip)
         {
             transform.localPosition = defaultPos * new Vector2(-1, 1);
@@ -37,10 +39,17 @@ public class WeaponSprite : MonoBehaviour
 
     private void Update()
     {
-        if (DataDictionary.PlayerStats.PlayerHealth <= 0) return;
+        if (!targetsPlayer && DataDictionary.PlayerStats.PlayerHealth <= 0) return;
+
+        if (targetsPlayer)
+        {
+            SpriteFlipX(parentRenderer.flipX);
+        }
+            
 
         // Get the mouse position in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (targetsPlayer) mousePosition = player.transform.position;
         mousePosition.z = 0; // Set Z to 0 if you're working in a 2D space
 
         // Calculate the direction from the object to the mouse

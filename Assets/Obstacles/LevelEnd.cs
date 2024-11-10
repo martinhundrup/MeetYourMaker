@@ -8,6 +8,7 @@ public class LevelEnd : MonoBehaviour
     [SerializeField] private float dist = 0.6f;
     private PlayerController player;
     private static LevelEnd instance;
+    private bool hasClicked = false;
 
     private void Awake()
     {
@@ -26,8 +27,9 @@ public class LevelEnd : MonoBehaviour
         {
             sr.enabled = true;
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !hasClicked)
             {
+                hasClicked = true;
                 instance = null;
                 //Destroy(this.gameObject);
 

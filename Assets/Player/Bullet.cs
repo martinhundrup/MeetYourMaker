@@ -16,6 +16,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float knockbackForce = 0f;
     [SerializeField] private float stunTime = 0f;
 
+    public bool Piercing
+    {
+        get { return piercing; }
+    }
+
     public void Initialize(Vector2 start, Vector2 direction, bool isPlayer)
     {
         if (isPlayer)
@@ -53,6 +58,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag(hb.HitboxTag)) return; // don't hit your own
+
         if (piercing)
         {
             if (collision.CompareTag("Wall Tilemap") || collision.CompareTag("Top Tilemap"))

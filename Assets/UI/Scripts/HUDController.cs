@@ -5,10 +5,7 @@ using UnityEngine;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] GameObject fadingCanvas;
-    [SerializeField] GameObject healthBar;
-    [SerializeField] GameObject ammoCount;
-    [SerializeField] GameObject expCount;
-    [SerializeField] GameObject hp;
+    [SerializeField] List<GameObject> elements = new List<GameObject>();
     public static HUDController instance;
 
     private void Awake()
@@ -25,10 +22,10 @@ public class HUDController : MonoBehaviour
 
     public void EnableHUD(bool _bool)
     {
-        healthBar.SetActive(_bool);
-        ammoCount.SetActive(_bool);
-        expCount.SetActive(_bool);
-        hp.SetActive(_bool);
+        foreach (var element in elements)
+        {
+            element.SetActive(_bool);
+        }
     }
 
     public void DisableFadeCanvas()

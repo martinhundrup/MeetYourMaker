@@ -25,6 +25,7 @@ public abstract class Enemy : Breakable
     protected Breakable breakable;
     protected SpriteRenderer sr;
     [SerializeField, Range(0,1)] protected float aggression = 0;
+    private ParticleSystem splatter;
 
     public float ContactDamage
     {
@@ -37,6 +38,7 @@ public abstract class Enemy : Breakable
 
     new protected void Awake()
     {
+        splatter = GetComponentInChildren<ParticleSystem>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         player = FindObjectOfType<PlayerController>();
@@ -53,8 +55,8 @@ public abstract class Enemy : Breakable
             Instantiate(corpse).transform.position = this.transform.position;
         }
 
-        // spawn exp
-        for (int i = 0; i < cost; i++)
+        // spawn exp - 50% more than cost
+        for (int i = 0; i < cost * 1.5f; i++)
         {
             Instantiate(exp).transform.position = this.transform.position;
         }
@@ -64,11 +66,13 @@ public abstract class Enemy : Breakable
 
     protected override void TakeDamage(Hitbox _hitbox)
     {
+        if (isInvulnerable) return; // don't take damage or knockback or stun
+        if (this.CompareTag(_hitbox.HitboxTag)) return; // don't get hit by your own shots
         if (hasHitstun)
             StartCoroutine(HitStun(_hitbox));
         //StartCoroutine(MakeInvulnerable()); // remove invulnerbility so multiple bullets can hit
         base.TakeDamage(_hitbox);
-
+        if (splatter != null) splatter.Play();
     }
 
     // Temporarily pauses the enemy when hit.

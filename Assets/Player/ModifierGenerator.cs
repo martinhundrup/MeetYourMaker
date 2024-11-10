@@ -77,7 +77,7 @@ public static class ModifierGenerator
     public static Modifier CreateModifier()
     {
         Modifier mod = GetModifier();      
-        int idx = UnityEngine.Random.Range(0, 16);
+        int idx = UnityEngine.Random.Range(0, 15);
 
         // decide what strength
         int strength = 0;
@@ -90,16 +90,16 @@ public static class ModifierGenerator
             strength = Random.Range(0, 2); // 0 or 1
         }
 
-        mod.cost = (strength + 1) * 10;
+        mod.cost = (strength + 1) * 15;
 
         bool neg = false;
         if (Random.Range(0, 4) == 0) neg = true; // make the modifier negative 25% of time
 
         if (idx == 0) // 0 - shroomie movement speed
         {
-            if (strength == 0) mod.movementSpeed = .05f; // 5 % increase
-            else if (strength == 1) mod.movementSpeed = .1f; // 10 % increase
-            else mod.movementSpeed = .2f; // 20 % increase
+            if (strength == 0) mod.movementSpeed = .10f; // 5 % increase
+            else if (strength == 1) mod.movementSpeed = .15f; // 10 % increase
+            else mod.movementSpeed = .25f; // 20 % increase
 
             if (neg) mod.movementSpeed *= -1; // make a decrease
 
@@ -108,9 +108,9 @@ public static class ModifierGenerator
         }
         else if (idx == 1) // 1 - shroomie max HP
         {
-            if (strength == 0) mod.maxHP = .05f; // 5 % increase
-            else if (strength == 1) mod.maxHP = .1f; // 10 % increase
-            else mod.maxHP = .2f; // 20 % increase
+            if (strength == 0) mod.maxHP = .15f; // 5 % increase
+            else if (strength == 1) mod.maxHP = .25f; // 10 % increase
+            else mod.maxHP = .40f; // 20 % increase
 
             if (neg) mod.maxHP *= -1; // make a decrease
             mod.name = "Max Health";
@@ -118,9 +118,9 @@ public static class ModifierGenerator
         }
         else if (idx == 2) // 2 - max ammo capacity
         {
-            if (strength == 0) mod.maxAmmo = 5; // 5 increase
-            else if (strength == 1) mod.maxAmmo = 15; // 15 increase
-            else mod.maxAmmo = 25; // 25 increase
+            if (strength == 0) mod.maxAmmo = 10; // 5 increase
+            else if (strength == 1) mod.maxAmmo = 25; // 15 increase
+            else mod.maxAmmo = 50; // 25 increase
 
             if (neg) mod.maxAmmo *= -1; // make a decrease
 
@@ -129,9 +129,9 @@ public static class ModifierGenerator
         }
         else if (idx == 3) // 3 - bullet speed
         {
-            if (strength == 0) mod.bulletSpeed = .05f; // 5 % increase
-            else if (strength == 1) mod.bulletSpeed = .1f; // 10 % increase
-            else mod.bulletSpeed = .2f; // 20 % increase
+            if (strength == 0) mod.bulletSpeed = .10f; // 5 % increase
+            else if (strength == 1) mod.bulletSpeed = .2f; // 10 % increase
+            else mod.bulletSpeed = .35f; // 20 % increase
 
             if (neg) mod.bulletSpeed *= -1; // make a decrease
 
@@ -153,9 +153,9 @@ public static class ModifierGenerator
         {
             neg = !neg; // invert
 
-            if (strength == 0) mod.reloadTime = .05f; // 5 % increase
-            else if (strength == 1) mod.reloadTime = .1f; // 10 % increase
-            else mod.reloadTime = .2f; // 20 % increase
+            if (strength == 0) mod.reloadTime = .10f; // 5 % increase
+            else if (strength == 1) mod.reloadTime = .20f; // 10 % increase
+            else mod.reloadTime = .30f; // 20 % increase
 
             if (neg) mod.reloadTime *= -1; // make a decrease
 
@@ -164,9 +164,9 @@ public static class ModifierGenerator
         }
         else if (idx == 6) // 6 - bullet spread
         {
-            if (strength == 0) mod.bulletSpread = 1; // 1 increase
-            else if (strength == 1) mod.bulletSpread = 3; // 3 increase
-            else mod.bulletSpread = 5; // 5 increase
+            if (strength == 0) mod.bulletSpread = 3; // 1 increase
+            else if (strength == 1) mod.bulletSpread = 5; // 3 increase
+            else mod.bulletSpread = 10; // 5 increase
 
             if (neg) mod.bulletSpread *= -1; // make a decrease
 
@@ -175,9 +175,9 @@ public static class ModifierGenerator
         }
         else if (idx == 7) // 7 - bullet size
         {
-            if (strength == 0) mod.bulletSize = .05f; // 5 % increase
-            else if (strength == 1) mod.bulletSize = .1f; // 10 % increase
-            else mod.bulletSize = .2f; // 20 % increase
+            if (strength == 0) mod.bulletSize = .10f; // 5 % increase
+            else if (strength == 1) mod.bulletSize = .15f; // 10 % increase
+            else mod.bulletSize = .25f; // 20 % increase
 
             if (neg) mod.bulletSize *= -1; // make a decrease
 
@@ -202,14 +202,7 @@ public static class ModifierGenerator
             mod.name = "Piercing Bullets";
             mod.description = "Grants bullets the ability to pierce through enemies.";
         }
-        else if (idx == 10) // 10 - bullet bouncing
-        {
-            mod.bulletBouncing = true;
-
-            mod.name = "Bouncing Bullets";
-            mod.description = "Grants bullets the ability to bounce off surfaces.";
-        }
-        else if (idx == 11) // 11 - bullet knockback
+        else if (idx == 10) // 11 - bullet knockback
         {
             if (strength == 0) mod.bulletKnockback = .10f; // 10 % increase
             else if (strength == 1) mod.bulletKnockback = .2f; // 20 % increase
@@ -220,7 +213,7 @@ public static class ModifierGenerator
             mod.name = "Bullet Knockback";
             mod.description = $"Modifies knockback effect of bullets by {(1 + mod.bulletKnockback) * 100}%.";
         }
-        else if (idx == 12) // 12 - bullet stun time
+        else if (idx == 11) // 12 - bullet stun time
         {
             if (strength == 0) mod.bulletStun = .10f; // 10 % increase
             else if (strength == 1) mod.bulletStun = .2f; // 20 % increase
@@ -231,14 +224,14 @@ public static class ModifierGenerator
             mod.name = "Bullet Stun Time";
             mod.description = $"Modifies the duration bullets stun enemies by {(1 + mod.bulletStun) * 100}%.";
         }
-        else if (idx == 13) // 13 - crouch unlock
+        else if (idx == 12) // 13 - crouch unlock
         {
             mod.crouch = true;
 
             mod.name = "Crouch Ability";
             mod.description = "Unlocks the ability for Shroomie to crouch.";
         }
-        else if (idx == 14) // 14 - crouch regen
+        else if (idx == 13) // 14 - crouch regen
         {
             if (strength == 0) mod.crouchRegen = .10f; // 10 % increase
             else if (strength == 1) mod.crouchRegen = .2f; // 20 % increase
@@ -249,7 +242,7 @@ public static class ModifierGenerator
             mod.name = "Crouch Regeneration";
             mod.description = $"Modifies health regeneration rate while crouching by {(1 + mod.crouchRegen) * 100}%.";
         }
-        else if (idx == 15) // 15 - roll unlock
+        else if (idx == 14) // 15 - roll unlock
         {
             mod.roll = true;
 

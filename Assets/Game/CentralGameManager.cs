@@ -24,6 +24,13 @@ public class CentralGameManager : MonoBehaviour
     [SerializeField] private SceneField level6;
     [SerializeField] private SceneField modifierUpgrades;
 
+    private bool betweenLevels = false;
+
+    public bool BetweenLevels
+    {
+        get { return betweenLevels; }
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -80,6 +87,13 @@ public class CentralGameManager : MonoBehaviour
 
     private void OnRespawn()
     {
+        if (betweenLevels)
+        {
+            gameSettings.GameLevel--;
+            LoadLevel();
+        }
+
+        else
         StartCoroutine(Respawn());
     }
     private IEnumerator Respawn()
@@ -104,32 +118,44 @@ public class CentralGameManager : MonoBehaviour
         HUDController.instance.EnableHUD(false);
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(HUDController.instance.FadeToOpaque());
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(modifierUpgrades.BuildIndex);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         yield return StartCoroutine(HUDController.instance.FadeToClear());
     }
 
     private void LoadLevel()
     {
         gameSettings.GameLevel++;
-        if (gameSettings.GameLevel <= 5) // first five floors are level 1
+
+        if (gameSettings.GameLevel % 5 == 0 && !betweenLevels)
+        {
+            Debug.Log("hello");
+            betweenLevels = true;
+            StartCoroutine(PlayerDeath());
+            return;
+        }
+        Debug.Log(gameSettings.GameLevel % 5);
+        betweenLevels = false;
+
+
+        if (gameSettings.GameLevel < 5) // first five floors are level 1
         {
             SceneManager.LoadScene(level1.BuildIndex);
         }
-        else if (gameSettings.GameLevel <= 10) // next 5 are level 2
+        else if (gameSettings.GameLevel < 10) // next 5 are level 2
         {
             SceneManager.LoadScene(level2.BuildIndex);
         }
-        else if (gameSettings.GameLevel <= 15)
+        else if (gameSettings.GameLevel < 15)
         {
             SceneManager.LoadScene(level3.BuildIndex);
         }
-        else if (gameSettings.GameLevel <= 20)
+        else if (gameSettings.GameLevel < 20)
         {
             SceneManager.LoadScene(level4.BuildIndex);
         }
-        else if (gameSettings.GameLevel <= 25)
+        else if (gameSettings.GameLevel < 25)
         {
             SceneManager.LoadScene(level5.BuildIndex);
         }

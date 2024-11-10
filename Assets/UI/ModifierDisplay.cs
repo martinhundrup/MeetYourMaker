@@ -26,7 +26,11 @@ public class ModifierDisplay : MonoBehaviour
     public void Chosen()
     {
         DataDictionary.PlayerStats.ApplyModifier(mod);
-        GameEvents.PlayerRespawn();
+        GetComponent<Button>().interactable = false;
+        DataDictionary.PlayerStats.EXP -= mod.cost;
+
+        if (defaultMod)
+            GameEvents.PlayerRespawn();
     }
 
     private void OnDestroy()

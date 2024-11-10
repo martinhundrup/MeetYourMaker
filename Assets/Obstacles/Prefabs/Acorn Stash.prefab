@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxTag: 
-  health: 3
+  health: 1
   acornDrops: {fileID: 3193441283192322431, guid: 29c759d198db5e943b61623bdce2977f, type: 3}
   numAcorns: 10
 --- !u!70 &1774034938440299921

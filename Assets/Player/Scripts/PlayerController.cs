@@ -28,13 +28,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject reloadIndicator;
     [SerializeField] private GameObject reloadProgress;
     [SerializeField] private SpriteRenderer shadow;
+    private ParticleSystem splatter;
 
     private bool isDead = false;
 
     private void Awake()
     {
-       
 
+        splatter = GetComponentInChildren<ParticleSystem>();
         reloadIndicator.SetActive(false);
         playerStats = DataDictionary.PlayerStats;
         gameSettings = DataDictionary.GameSettings;
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DustSpawner());
 
         // disable attacking on level 0
-        playerStats.CanShoot = gameSettings.GameLevel > 0;
+        playerStats.UsesAmmo = gameSettings.GameLevel != 0;
 
     }
 
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
         if (rolling || crouched || !acceptingInput) return;
 
         // shooting
-        if (Input.GetButton("Fire") && playerStats.AmmoCount > 0 && !isInCooldown && playerStats.CanShoot)
+        if (Input.GetButton("Fire") && (playerStats.AmmoCount > 0 || !playerStats.UsesAmmo) && !isInCooldown)
         {
             SFXManager.instance.PlayFire();
 
@@ -99,7 +100,9 @@ public class PlayerController : MonoBehaviour
                 obj.GetComponent<Bullet>().Initialize(bulletSpawner.transform.position, direction, true);
             }
 
-            playerStats.AmmoCount--;
+            if (playerStats.UsesAmmo)
+                playerStats.AmmoCount--;
+
             StartCoroutine(CooldownTimer(playerStats.ReloadTime));
         }
     }
@@ -204,8 +207,9 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var enemy = collision.gameObject.GetComponent<Enemy>();
-        if (enemy != null && !isInvulnerable && !isDead)
+        if (enemy != null && !isInvulnerable && !isDead && enemy.ContactDamage > 0)
         {
+            splatter.Play();
             playerStats.PlayerHealth -= enemy.ContactDamage;
             StartCoroutine(MakeInvulnerable(0.4f));
             if (playerStats.PlayerHealth <= 0)
@@ -215,7 +219,28 @@ public class PlayerController : MonoBehaviour
                 animator.Play("Death");
                 GameEvents.PlayerDeath();
             }
-        }        
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var hitbox = collision.gameObject.GetComponent<Hitbox>();
+        if (hitbox != null && !isInvulnerable && !isDead && hitbox.HitboxTag == "Enemy")
+        {
+            splatter.Play();
+            playerStats.PlayerHealth -= hitbox.Damage;
+            StartCoroutine(MakeInvulnerable(0.4f));
+            if (playerStats.PlayerHealth <= 0)
+            {
+                isDead = true;
+                acceptingInput = false;
+                animator.Play("Death");
+                GameEvents.PlayerDeath();
+            }
+
+            if (!hitbox.GetComponent<Bullet>().Piercing)
+                Destroy(collision.gameObject); // we delete bullet instead of itself just trust me
+        }
     }
 
     private IEnumerator MakeInvulnerable(float _time)

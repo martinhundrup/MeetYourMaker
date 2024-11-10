@@ -13,7 +13,7 @@ public class Breakable : MonoBehaviour
     [SerializeField] private GameObject acornDrops;
     [SerializeField] private int numAcorns;
     private float maxHealth;
-    protected Blink blink;
+    protected Blink blink = null;
     protected HealthBar healthBar;
 
     private bool isDead = false;
@@ -23,7 +23,6 @@ public class Breakable : MonoBehaviour
         maxHealth = health;
         blink = GetComponent<Blink>();
         if (blink == null ) blink = gameObject.AddComponent<Blink>();
-
         healthBar = GetComponent<HealthBar>();
         if (healthBar == null ) healthBar = gameObject.AddComponent<HealthBar>();
     }
@@ -55,6 +54,7 @@ public class Breakable : MonoBehaviour
 
     virtual protected void TakeDamage(Hitbox _hitbox)
     {
+        Debug.Log(blink);
         Health -= _hitbox.Damage;
         blink.BlinkAmount(1);
         if (OnDamageTaken != null)
