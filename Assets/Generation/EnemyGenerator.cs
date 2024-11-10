@@ -59,7 +59,6 @@ public class EnemyGenerator : ScriptableObject
                 int i = Convert2DTo1DIndex(y, x);
                 if (obstacleTiles[i] == 0 && wallTiles[i] != 0) // if empty tile and not next to a wall
                 {
-                    Debug.Log("now check for neighbors");
                     
                     // Check neighboring tiles for obstacles
                     bool hasNeighboringObstacle = false;
@@ -69,7 +68,7 @@ public class EnemyGenerator : ScriptableObject
                     {
                         
                         int neighborIndex = i + offset;
-                        Debug.Log($"{neighborIndex} : {obstacleTiles[neighborIndex]} : { wallTiles[neighborIndex]} : len {obstacleTiles.Length}");
+              
                         if (neighborIndex < 0 && neighborIndex >= obstacleTiles.Length && (obstacleTiles[neighborIndex] != 0 || wallTiles[neighborIndex] == 0))
                         {
                             hasNeighboringObstacle = true;
@@ -79,7 +78,6 @@ public class EnemyGenerator : ScriptableObject
 
                     if (!hasNeighboringObstacle)
                     {
-                        Debug.Log("found enemy tile");
                         availableTiles.Add(i);
                     }
                 }

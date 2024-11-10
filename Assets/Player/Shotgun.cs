@@ -6,6 +6,10 @@ public class Shotgun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DataDictionary.PlayerStats.PlayerHealth <= 0) return; // don't update when player dead
+
+        Debug.Log("i am not dead");
+
         // Get the mouse position in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0; // Set Z to 0 if you're working in a 2D space

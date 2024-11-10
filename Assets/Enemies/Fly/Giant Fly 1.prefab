@@ -198,12 +198,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxTag: Enemy
   health: 6
+  acornDrops: {fileID: 0}
+  numAcorns: 0
   corpse: {fileID: 0}
   exp: {fileID: 5978359107671657541, guid: b467ca42fc042d4498bc3a6f431e86e7, type: 3}
   cost: 3
   speed: 4
   hasHitstun: 1
-  contactDamage: 3
+  contactDamage: 2
   aggression: 0
   jumpInterval: 1.5
   intervalMargin: 0.5

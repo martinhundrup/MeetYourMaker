@@ -79,3 +79,8 @@ MonoBehaviour:
     _name: 
     _path: 
     _buildIndex: 0
+  modifierUpgrades:
+    _sceneOB: {fileID: 102900000, guid: 8aebc31f409d9684b827f842cd7011e5, type: 3}
+    _name: UI Testing
+    _path: Assets/Scenes/UI Testing.unity
+    _buildIndex: 7

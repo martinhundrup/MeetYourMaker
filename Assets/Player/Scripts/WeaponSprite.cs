@@ -37,6 +37,8 @@ public class WeaponSprite : MonoBehaviour
 
     private void Update()
     {
+        if (DataDictionary.PlayerStats.PlayerHealth <= 0) return;
+
         // Get the mouse position in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0; // Set Z to 0 if you're working in a 2D space

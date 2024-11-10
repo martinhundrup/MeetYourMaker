@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
+
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
         if (rolling) return;
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.Play("run");
         }
-        else if (!crouched)
+        else if (!crouched && playerStats.PlayerHealth > 0)
         {
             animator.Play("idle");
         }
@@ -128,6 +129,8 @@ public class PlayerController : MonoBehaviour
 
     private void FindFacingDirection()
     {
+        if (playerStats.PlayerHealth <= 0) return;
+
         var newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         facingDirection = newPos.normalized;
 
@@ -208,8 +211,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(MakeInvulnerable(0.4f));
             if (playerStats.PlayerHealth == 0)
             {
-                Debug.LogError("Shroomie died!");
+                acceptingInput = false;
                 animator.Play("Death");
+                GameEvents.PlayerDeath();
             }
         }        
     }

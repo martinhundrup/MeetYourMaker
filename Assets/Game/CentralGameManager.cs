@@ -22,6 +22,7 @@ public class CentralGameManager : MonoBehaviour
     [SerializeField] private SceneField level4; 
     [SerializeField] private SceneField level5;
     [SerializeField] private SceneField level6;
+    [SerializeField] private SceneField modifierUpgrades;
 
     private void Awake()
     {
@@ -58,12 +59,14 @@ public class CentralGameManager : MonoBehaviour
     {
         GameEvents.OnGameStart += OnGameStart;
         GameEvents.OnLevelEnd += LoadLevel;
+        GameEvents.OnPlayerDeath += OnPlayerDeath;
     }
 
     private void UnSubscribeGameEvents()
     {
         GameEvents.OnLevelEnd -= LoadLevel;
         GameEvents.OnGameStart -= OnGameStart;
+        GameEvents.OnPlayerDeath -= OnPlayerDeath;
     }
 
     private void OnGameStart()
@@ -71,6 +74,21 @@ public class CentralGameManager : MonoBehaviour
         gameSettings.GameLevel = 0;
         playerStats.ResetDefaults();
         SceneManager.LoadScene(openingScene.BuildIndex);
+    }
+
+    private void OnPlayerDeath()
+    {
+        StartCoroutine(PlayerDeath());
+    }
+    private IEnumerator PlayerDeath()
+    {
+        HUDController.instance.EnableHUD(false);
+        yield return new WaitForSeconds(2f);
+        yield return StartCoroutine(HUDController.instance.FadeToOpaque());
+
+        SceneManager.LoadScene(modifierUpgrades.BuildIndex);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(HUDController.instance.FadeToClear());
     }
 
     private void LoadLevel()

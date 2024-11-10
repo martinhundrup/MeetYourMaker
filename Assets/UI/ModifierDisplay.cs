@@ -16,14 +16,6 @@ public class ModifierDisplay : MonoBehaviour
         Initialize(ModifierGenerator.CreateModifier());
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Initialize(ModifierGenerator.CreateModifier());
-        }
-    }
-
     public void Initialize(Modifier _mod)
     {
         mod = _mod;
