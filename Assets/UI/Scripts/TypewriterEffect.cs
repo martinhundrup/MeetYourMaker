@@ -32,7 +32,6 @@ public class TypewriterEffect : MonoBehaviour
         }
         if (idleArrow != null)
             idleArrow.SetActive(false);
-        SFXManager.instance.PlayClick();
         textBox.text = string.Empty;
         yield return null;
     }

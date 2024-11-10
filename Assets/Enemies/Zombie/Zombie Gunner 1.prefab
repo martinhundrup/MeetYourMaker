@@ -554,8 +554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxTag: Enemy
   health: 5
-  acornDrops: {fileID: 0}
-  numAcorns: 0
+  acornDrops: {fileID: 3193441283192322431, guid: 29c759d198db5e943b61623bdce2977f, type: 3}
+  numAcorns: 5
   corpse: {fileID: 6539512322366972734, guid: 04fbde6edf47dda4baa5c063f03babe7, type: 3}
   exp: {fileID: 5978359107671657541, guid: b467ca42fc042d4498bc3a6f431e86e7, type: 3}
   cost: 2

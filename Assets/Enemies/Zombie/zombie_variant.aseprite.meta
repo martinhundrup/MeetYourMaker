@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 113}
   - name: zombie_variant_Frame_9
     originalName: 
-    pivot: {x: 0.5, y: 0.8}
+    pivot: {x: 0.5, y: 0.8888889}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -311,7 +311,7 @@ ScriptedImporter:
       x: 26
       y: 67
       width: 14
-      height: 10
+      height: 9
     spriteID: 7a16a37b90c19684dbc90b9ee3e079ad
     spriteBone: []
     spriteOutline: []
@@ -418,7 +418,7 @@ ScriptedImporter:
         x: 1
         y: 0
         width: 14
-        height: 10
+        height: 9
       spriteId: 7a16a37b90c19684dbc90b9ee3e079ad
     linkedCells: []
     parentIndex: -1

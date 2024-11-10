@@ -16,11 +16,12 @@ public class HealthBar : MonoBehaviour
         canvas = GetComponentInChildren<Canvas>();
         slider = GetComponentInChildren<Slider>();
         breakable.OnDamageTaken += UpdateDisplay;
-        canvas.enabled = false;
+        if (canvas) canvas.enabled = false;
     }
 
     private void UpdateDisplay()
     {
+        if (!canvas) return;
         canvas.enabled = true;
         if (slider == null) return;
         slider.value = breakable.Health / breakable.MaxHealth;

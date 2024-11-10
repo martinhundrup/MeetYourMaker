@@ -21,7 +21,7 @@ public class Acorn : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SFXManager.instance.PlayCollect();
+            SFXManager.instance.PlayAmmoCollect();
             DataDictionary.PlayerStats.AmmoCount += ammo;
             var obj = Instantiate(indicator);
             obj.transform.position = this.transform.position;

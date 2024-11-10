@@ -1,1 +1,2 @@
 pixel font: https://www.dafont.com/zacchary-dempsey-plante.d6765
+sfx: https://opengameart.org/content/handling-guns

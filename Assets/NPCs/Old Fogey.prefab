@@ -367,8 +367,8 @@ MonoBehaviour:
   hasHitstun: 0
   contactDamage: 0
   aggression: 0
+  splatter: {fileID: 8747640860640431247, guid: 5b07b2ace1c379846ac91731e5a112ae, type: 3}
   bubble: {fileID: 3293186383067875092}
-  typewriter: {fileID: 7638936779931499608}
   dist: 2
   dialogue:
   - go on, my child.

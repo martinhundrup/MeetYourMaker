@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 #endif
     }
 
-    private void SetAcceptingInput(bool _input)
+    public void SetAcceptingInput(bool _input)
     {
         acceptingInput = !_input;
     }
@@ -209,11 +209,13 @@ public class PlayerController : MonoBehaviour
         var enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null && !isInvulnerable && !isDead && enemy.ContactDamage > 0)
         {
+            SFXManager.instance.PlayHit();
             splatter.Play();
             playerStats.PlayerHealth -= enemy.ContactDamage;
             StartCoroutine(MakeInvulnerable(0.4f));
             if (playerStats.PlayerHealth <= 0)
             {
+                SFXManager.instance.PlayShroomieDeath();
                 isDead = true;
                 acceptingInput = false;
                 animator.Play("Death");
@@ -227,11 +229,13 @@ public class PlayerController : MonoBehaviour
         var hitbox = collision.gameObject.GetComponent<Hitbox>();
         if (hitbox != null && !isInvulnerable && !isDead && hitbox.HitboxTag == "Enemy")
         {
+            SFXManager.instance.PlayHit();
             splatter.Play();
             playerStats.PlayerHealth -= hitbox.Damage;
             StartCoroutine(MakeInvulnerable(0.4f));
             if (playerStats.PlayerHealth <= 0)
             {
+                SFXManager.instance.PlayShroomieDeath();
                 isDead = true;
                 acceptingInput = false;
                 animator.Play("Death");

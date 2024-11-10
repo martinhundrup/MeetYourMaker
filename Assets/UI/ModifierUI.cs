@@ -10,6 +10,7 @@ public class ModifierUI : MonoBehaviour
     {
         if (CentralGameManager.instance.BetweenLevels)
         {
+            SFXManager.instance.PlayWin();
             victory.SetActive(true);
             defeat.SetActive(false);
         }

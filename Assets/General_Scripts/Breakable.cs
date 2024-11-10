@@ -48,6 +48,7 @@ public class Breakable : MonoBehaviour
         
         if (hitbox != null && hitbox.HitboxTag != hitboxTag)
         {
+            //SFXManager.instance.PlayHit();
             TakeDamage(hitbox);     
         }      
     }

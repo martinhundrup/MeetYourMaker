@@ -283,15 +283,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 70}
   - name: zombie_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: 0.7}
+    pivot: {x: 0.5, y: 0.8888889}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 113
+      x: 26
+      y: 67
       width: 14
-      height: 10
+      height: 9
     spriteID: 694352e0fe7ac1c48beb02a093ba18df
     spriteBone: []
     spriteOutline: []
@@ -300,7 +300,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 113}
+    uvTransform: {x: 26, y: 67}
   - name: zombie_Frame_9
     originalName: 
     pivot: {x: 0.5, y: 0.8}
@@ -308,8 +308,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 26
-      y: 67
+      x: 4
+      y: 113
       width: 14
       height: 10
     spriteID: 89bb3478a118f324d8148db875b37cf6
@@ -320,7 +320,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 26, y: 67}
+    uvTransform: {x: 4, y: 113}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -407,9 +407,9 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 1
-        y: 1
+        y: 0
         width: 14
-        height: 10
+        height: 9
       spriteId: 694352e0fe7ac1c48beb02a093ba18df
     - name: zombie_Frame_9
       frameIndex: 9

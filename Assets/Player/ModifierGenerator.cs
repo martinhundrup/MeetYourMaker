@@ -93,7 +93,8 @@ public static class ModifierGenerator
         mod.cost = (strength + 1) * 15;
 
         bool neg = false;
-        if (Random.Range(0, 4) == 0) neg = true; // make the modifier negative 25% of time
+        // no more negatives
+        //if (Random.Range(0, 4) == 0) neg = true; // make the modifier negative 25% of time
 
         if (idx == 0) // 0 - shroomie movement speed
         {
@@ -104,7 +105,7 @@ public static class ModifierGenerator
             if (neg) mod.movementSpeed *= -1; // make a decrease
 
             mod.name = "Movement Speed";
-            mod.description = $"Modifies Shroomie's movement speed by {(1 + mod.movementSpeed) * 100}%.";
+            mod.description = $"Increases Shroomie's movement speed by {(1 + mod.movementSpeed) * 100}%.";
         }
         else if (idx == 1) // 1 - shroomie max HP
         {
@@ -114,7 +115,7 @@ public static class ModifierGenerator
 
             if (neg) mod.maxHP *= -1; // make a decrease
             mod.name = "Max Health";
-            mod.description = $"Modifies Shroomie's max health by {(1 + mod.maxHP) * 100}%.";
+            mod.description = $"Increases Shroomie's max health by {(1 + mod.maxHP) * 100}%.";
         }
         else if (idx == 2) // 2 - max ammo capacity
         {
@@ -136,7 +137,7 @@ public static class ModifierGenerator
             if (neg) mod.bulletSpeed *= -1; // make a decrease
 
             mod.name = "Bullet Speed";
-            mod.description = $"Modifies bullet speed by {(1 + mod.bulletSpeed) * 100}%.";
+            mod.description = $"Increases bullet speed by {(1 + mod.bulletSpeed) * 100}%.";
         }
         else if (idx == 4) // 4 - bullet count
         {
@@ -147,7 +148,7 @@ public static class ModifierGenerator
             if (neg) mod.bulletCount *= -1; // make a decrease
 
             mod.name = "Bullet Count";
-            mod.description = $"Modifies bullet count per shot by {mod.bulletCount}.";
+            mod.description = $"Increases bullet count per shot by {mod.bulletCount}.";
         }
         else if (idx == 5) // 5 - reload time
         {
@@ -160,7 +161,7 @@ public static class ModifierGenerator
             if (neg) mod.reloadTime *= -1; // make a decrease
 
             mod.name = "Reload Time";
-            mod.description = $"Modifies reload time by {(1 + mod.reloadTime) * 100}%.";
+            mod.description = $"Decreases reload time by {(1 + mod.reloadTime) * 100}%.";
         }
         else if (idx == 6) // 6 - bullet spread
         {
@@ -171,7 +172,7 @@ public static class ModifierGenerator
             if (neg) mod.bulletSpread *= -1; // make a decrease
 
             mod.name = "Bullet Spread";
-            mod.description = $"Modifies bullet spread by {mod.bulletSpread} degrees.";
+            mod.description = $"Increases bullet spread by {mod.bulletSpread} degrees.";
         }
         else if (idx == 7) // 7 - bullet size
         {
@@ -182,7 +183,7 @@ public static class ModifierGenerator
             if (neg) mod.bulletSize *= -1; // make a decrease
 
             mod.name = "Bullet Size";
-            mod.description = $"Modifies bullet size by {(1 + mod.bulletSize) * 100}%.";
+            mod.description = $"Increases bullet size by {(1 + mod.bulletSize) * 100}%.";
         }
         else if (idx == 8) // 8 - bullet damage
         {
@@ -193,14 +194,14 @@ public static class ModifierGenerator
             if (neg) mod.bulletDamage *= -1; // make a decrease
 
             mod.name = "Bullet Damage";
-            mod.description = $"Modifies bullet damage by {(1 + mod.bulletDamage) * 100}%.";
+            mod.description = $"Increases bullet damage by {(1 + mod.bulletDamage) * 100}%.";
         }
         else if (idx == 9) // 9 - bullet piercing
         {
             mod.bulletPiercing = true;
 
             mod.name = "Piercing Bullets";
-            mod.description = "Grants bullets the ability to pierce through enemies.";
+            mod.description = "Grants bullets the ability to pierce through enemies and objects.";
         }
         else if (idx == 10) // 11 - bullet knockback
         {
@@ -211,7 +212,7 @@ public static class ModifierGenerator
             if (neg) mod.bulletKnockback *= -1; // make a decrease
 
             mod.name = "Bullet Knockback";
-            mod.description = $"Modifies knockback effect of bullets by {(1 + mod.bulletKnockback) * 100}%.";
+            mod.description = $"Increases knockback effect of bullets by {(1 + mod.bulletKnockback) * 100}%.";
         }
         else if (idx == 11) // 12 - bullet stun time
         {
@@ -222,7 +223,7 @@ public static class ModifierGenerator
             if (neg) mod.bulletStun *= -1; // make a decrease
 
             mod.name = "Bullet Stun Time";
-            mod.description = $"Modifies the duration bullets stun enemies by {(1 + mod.bulletStun) * 100}%.";
+            mod.description = $"Increases the duration bullets stun enemies by {(1 + mod.bulletStun) * 100}%.";
         }
         else if (idx == 12) // 13 - crouch unlock
         {
@@ -233,14 +234,24 @@ public static class ModifierGenerator
         }
         else if (idx == 13) // 14 - crouch regen
         {
-            if (strength == 0) mod.crouchRegen = .10f; // 10 % increase
-            else if (strength == 1) mod.crouchRegen = .2f; // 20 % increase
-            else mod.crouchRegen = .3f; // 30 % increase
+            if (!DataDictionary.PlayerStats.HasCrouch) // unlock crouch before offering upgrades
+            {
+                mod.crouch = true;
 
-            if (neg) mod.crouchRegen *= -1; // make a decrease
+                mod.name = "Crouch Ability";
+                mod.description = "Unlocks the ability for Shroomie to crouch.";
+            }
+            else
+            {
+                if (strength == 0) mod.crouchRegen = .10f; // 10 % increase
+                else if (strength == 1) mod.crouchRegen = .2f; // 20 % increase
+                else mod.crouchRegen = .3f; // 30 % increase
 
-            mod.name = "Crouch Regeneration";
-            mod.description = $"Modifies health regeneration rate while crouching by {(1 + mod.crouchRegen) * 100}%.";
+                if (neg) mod.crouchRegen *= -1; // make a decrease
+
+                mod.name = "Crouch Regeneration";
+                mod.description = $"Increases health regeneration rate while crouching by {(1 + mod.crouchRegen) * 100}%.";
+            }            
         }
         else if (idx == 14) // 15 - roll unlock
         {

@@ -104,6 +104,7 @@ public class Turret : MonoBehaviour
     // shoots the appropriate amount of bullets in their respective directions.
     private void Shoot(Vector2 _dir)
     {
+        SFXManager.instance.PlayEnemyFire();
         if (projectilesPerShot == 1)
         {
             GameObject _p = Instantiate(projectile);

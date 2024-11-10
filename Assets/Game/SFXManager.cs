@@ -6,26 +6,45 @@ public class SFXManager : MonoBehaviour
     public static SFXManager instance;
     private AudioSource audioSource;
     [SerializeField] private AudioClip BGM;
-    [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip fire;
-    [SerializeField] private AudioClip death;
-    [SerializeField] private AudioClip kill;
-    [SerializeField] private AudioClip collect;
-    [SerializeField] private AudioClip click;
+    [SerializeField] private AudioClip enemyFire;
+    [SerializeField] private AudioClip hit;
+    [SerializeField] private AudioClip expCollect;
+    [SerializeField] private AudioClip ammoCollect;
+    [SerializeField] private AudioClip shroomieDeath;
+    [SerializeField] private AudioClip win;
+    [SerializeField] private AudioClip open;
 
     private void Awake()
     {
         if (instance == null) { instance = this; }
         else { Destroy(this.gameObject); }
 
+        DontDestroyOnLoad(gameObject);
+
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = BGM;
         audioSource.Play();
     }
 
-    public void PlayJump()
+    public void PlayEnemyFire()
     {
-        audioSource.PlayOneShot(jump);
+        audioSource.PlayOneShot(enemyFire);
+    }
+
+    public void PlayOpen()
+    {
+        audioSource.PlayOneShot(open);
+    }
+
+    public void PlayShroomieDeath()
+    {
+        audioSource.PlayOneShot(shroomieDeath);
+    }
+
+    public void PlayWin()
+    {
+        audioSource.PlayOneShot(win);
     }
 
     public void PlayFire()
@@ -33,23 +52,18 @@ public class SFXManager : MonoBehaviour
         audioSource.PlayOneShot(fire);
     }
 
-    public void PlayDeath()
+    public void PlayHit()
     {
-        audioSource.PlayOneShot(death);
+        audioSource.PlayOneShot(hit);
     }
 
-    public void PlayKill()
+    public void PlayAmmoCollect()
     {
-        audioSource.PlayOneShot(kill);
+        audioSource.PlayOneShot(ammoCollect);
     }
 
-    public void PlayCollect()
+    public void PlayEXPCollect()
     {
-        audioSource.PlayOneShot(collect);
-    }
-
-    public void PlayClick()
-    {
-        audioSource.PlayOneShot(click);
+        audioSource.PlayOneShot(expCollect);
     }
 }

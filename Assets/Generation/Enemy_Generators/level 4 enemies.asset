@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: level 4 enemies
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 8456545713432222802, guid: 1916c907f5333ea48b6c274ad0f5f25c, type: 3}
   - {fileID: 5310734247314217954, guid: b4b1838e9200dca49a485bfe8794ac8a, type: 3}
   - {fileID: 5310734247314217954, guid: 3cdf6a8d4fb27c74e898001bc995e672, type: 3}
-  - {fileID: 8456545713432222802, guid: e2132c41c8a03214a8f71102e924a857, type: 3}
   - {fileID: 5310734247314217954, guid: e72887bb1b9d57d4b8bab41428eb1ce8, type: 3}
   - {fileID: 3467376689962751195, guid: 302d93661e539614bb67fafd894d1565, type: 3}
   - {fileID: 3467376689962751195, guid: 0b789ca2a3b25b340bb77f0f444b193a, type: 3}

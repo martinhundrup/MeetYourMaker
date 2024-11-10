@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8855028695978612078}
   - component: {fileID: 930132829360948679}
   - component: {fileID: 3923462690103659074}
+  - component: {fileID: -3904139981945184658}
   m_Layer: 0
   m_Name: Blood Splatter Yellow
   m_TagString: Untagged
@@ -4888,3 +4889,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-3904139981945184658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747640860640431247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79beeb01fd47c084fbe451b350ca1399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

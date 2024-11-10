@@ -70,6 +70,7 @@ public class EXP : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SFXManager.instance.PlayEXPCollect();
             DataDictionary.PlayerStats.EXP++;
             var obj = Instantiate(indicator);
             obj.transform.position = this.transform.position;

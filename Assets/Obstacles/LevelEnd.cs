@@ -29,6 +29,8 @@ public class LevelEnd : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && !hasClicked)
             {
+                player.SetAcceptingInput(false);
+                //SFXManager.instance.PlayOpen();
                 hasClicked = true;
                 instance = null;
                 //Destroy(this.gameObject);

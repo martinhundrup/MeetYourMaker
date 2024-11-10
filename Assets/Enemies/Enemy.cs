@@ -25,7 +25,7 @@ public abstract class Enemy : Breakable
     protected Breakable breakable;
     protected SpriteRenderer sr;
     [SerializeField, Range(0,1)] protected float aggression = 0;
-    private ParticleSystem splatter;
+    [SerializeField] private GameObject splatter;
 
     public float ContactDamage
     {
@@ -38,7 +38,6 @@ public abstract class Enemy : Breakable
 
     new protected void Awake()
     {
-        splatter = GetComponentInChildren<ParticleSystem>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
         player = FindObjectOfType<PlayerController>();
@@ -52,7 +51,9 @@ public abstract class Enemy : Breakable
         if (Health > 0) return; // deleted on scene end, so don't do anything else
         if (corpse != null) 
         {
-            Instantiate(corpse).transform.position = this.transform.position;
+            var cor = Instantiate(corpse);
+            cor.transform.position = this.transform.position;
+            cor.GetComponent<SpriteRenderer>().flipX = sr.flipX;
         }
 
         // spawn exp - 50% more than cost
@@ -72,7 +73,12 @@ public abstract class Enemy : Breakable
             StartCoroutine(HitStun(_hitbox));
         //StartCoroutine(MakeInvulnerable()); // remove invulnerbility so multiple bullets can hit
         base.TakeDamage(_hitbox);
-        if (splatter != null) splatter.Play();
+        if (splatter != null)
+        {
+            var particles = Instantiate(splatter).GetComponent<ParticleSystem>();
+            particles.transform.position = this.transform.position;
+            particles.Play();
+        }
     }
 
     // Temporarily pauses the enemy when hit.
