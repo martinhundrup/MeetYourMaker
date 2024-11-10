@@ -17,7 +17,7 @@ public class EXPDisplay : MonoBehaviour
 
     private void Update()
     {
-        text.text = $"exp: {player.EXP.ToString("000")}";
+        text.text = $"Exp: {player.EXP.ToString("000")}";
 
     }
 }

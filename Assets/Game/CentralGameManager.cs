@@ -58,12 +58,14 @@ public class CentralGameManager : MonoBehaviour
     private void SubscribeGameEvents()
     {
         GameEvents.OnGameStart += OnGameStart;
+        GameEvents.OnPlayerRespawn += OnRespawn;
         GameEvents.OnLevelEnd += LoadLevel;
         GameEvents.OnPlayerDeath += OnPlayerDeath;
     }
 
     private void UnSubscribeGameEvents()
     {
+        GameEvents.OnPlayerRespawn -= OnRespawn;
         GameEvents.OnLevelEnd -= LoadLevel;
         GameEvents.OnGameStart -= OnGameStart;
         GameEvents.OnPlayerDeath -= OnPlayerDeath;
@@ -76,6 +78,23 @@ public class CentralGameManager : MonoBehaviour
         SceneManager.LoadScene(openingScene.BuildIndex);
     }
 
+    private void OnRespawn()
+    {
+        StartCoroutine(Respawn());
+    }
+    private IEnumerator Respawn()
+    {
+        yield return StartCoroutine(HUDController.instance.FadeToOpaque());
+        yield return new WaitForSeconds(1f);
+        gameSettings.GameLevel = 0;
+        playerStats.Respawn();
+        SceneManager.LoadScene(openingScene.BuildIndex);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(HUDController.instance.FadeToClear());
+        HUDController.instance.EnableHUD(true);
+    }
+
+
     private void OnPlayerDeath()
     {
         StartCoroutine(PlayerDeath());
@@ -85,7 +104,7 @@ public class CentralGameManager : MonoBehaviour
         HUDController.instance.EnableHUD(false);
         yield return new WaitForSeconds(2f);
         yield return StartCoroutine(HUDController.instance.FadeToOpaque());
-
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(modifierUpgrades.BuildIndex);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(HUDController.instance.FadeToClear());

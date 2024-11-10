@@ -11,6 +11,12 @@ public static class GameEvents
     public static event Action OnLevelEnd;
     public static event Action OnGameStart; // reset shroomies values, loading from menu
     public static event Action OnPlayerDeath;
+    public static event Action OnPlayerRespawn;
+
+    public static void PlayerRespawn()
+    {
+        OnPlayerRespawn?.Invoke();
+    }
 
     public static void PlayerDeath()
     {

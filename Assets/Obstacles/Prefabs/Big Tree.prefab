@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3885772797898812993}
   - component: {fileID: 8939891827206060777}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1424297521055944052}
   - component: {fileID: 6737273487758896002}
   - component: {fileID: 4021618774513689139}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Big Tree
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -187,6 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxTag: 
   health: 12
+  acornDrops: {fileID: 0}
+  numAcorns: 0
 --- !u!70 &6737273487758896002
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -242,6 +244,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4711076408573595664}
     m_Modifications:
+    - target: {fileID: 1296961596623792139, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4672068233700761815, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4717662662254808927, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -250,9 +260,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5294157821775696224, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5409581931647152676, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
       propertyPath: m_Name
       value: Health Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409581931647152676, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6147399763616469941, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
       propertyPath: m_Pivot.x
@@ -337,6 +355,10 @@ PrefabInstance:
     - target: {fileID: 7404188718939718708, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 258
+      objectReference: {fileID: 0}
+    - target: {fileID: 7656934938519873362, guid: 28a3990afb6735746b1028d51fd8ba67, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -61624,11 +61624,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!212 &454207503 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5738099926192682921, guid: 13484c6ef2fc2d64ebb77f6c0fe8ca03, type: 3}
-  m_PrefabInstance: {fileID: 1208721595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &463160629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4501447570657540873, guid: c5ee6991b5eb7a24c9c0c6168bd4b787, type: 3}
@@ -69431,22 +69426,6 @@ PrefabInstance:
     - target: {fileID: 5869557868551473169, guid: 13484c6ef2fc2d64ebb77f6c0fe8ca03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7607916502087441912, guid: 13484c6ef2fc2d64ebb77f6c0fe8ca03, type: 3}
-      propertyPath: dust
-      value: 
-      objectReference: {fileID: 2589795533396613321, guid: 858f37fddc86c5240a539c97a3916f8c, type: 3}
-    - target: {fileID: 7607916502087441912, guid: 13484c6ef2fc2d64ebb77f6c0fe8ca03, type: 3}
-      propertyPath: shadow
-      value: 
-      objectReference: {fileID: 454207503}
-    - target: {fileID: 7607916502087441912, guid: 13484c6ef2fc2d64ebb77f6c0fe8ca03, type: 3}
-      propertyPath: reloadProgress
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7607916502087441912, guid: 13484c6ef2fc2d64ebb77f6c0fe8ca03, type: 3}
-      propertyPath: reloadIndicator
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7448004439719441262, guid: 13484c6ef2fc2d64ebb77f6c0fe8ca03, type: 3}

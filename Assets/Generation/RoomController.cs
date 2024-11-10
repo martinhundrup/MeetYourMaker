@@ -45,14 +45,11 @@ public class RoomController : MonoBehaviour
 
     private void EnemyDeath(Enemy _enemy)
     {
-        Debug.Log("enemy died!");
         enemyCount--;
         _enemy.OnEnemyDied -= EnemyDeath;
 
         if (enemyCount <= 0)
-        {
-            Debug.Log("room cleared!");
-
+        { 
             Instantiate(endOfLevel).transform.position = Vector2.zero;
         }
     }

@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject reloadProgress;
     [SerializeField] private SpriteRenderer shadow;
 
+    private bool isDead = false;
+
     private void Awake()
     {
        
@@ -42,8 +44,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         weaponSprite = GetComponentInChildren<WeaponSprite>();
         GameEvents.OnGamePaused += SetAcceptingInput;
-        // for now, heal player on awake
-        playerStats.PlayerHealth = playerStats.PlayerMaxHealth;
+
         bulletSpawner = GameObject.FindGameObjectWithTag("BulletSpawner");
         StartCoroutine(DustSpawner());
 
@@ -165,7 +166,6 @@ public class PlayerController : MonoBehaviour
         if (!rolling && acceptingInput && Input.GetButtonDown("Roll") && !crouched && !(inputX == 0f && inputY == 0f) 
             && playerStats.HasRoll)
         {
-            Debug.Log("roll");
             StartCoroutine(_Roll());
         }
     }
@@ -173,7 +173,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator _Roll()
     {
         rolling = true;
-        animator.Play("root");
         rb.velocity = Vector2.zero;
         weaponSprite.GetComponent<SpriteRenderer>().enabled = false;
         isInvulnerable = true;
@@ -205,12 +204,13 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var enemy = collision.gameObject.GetComponent<Enemy>();
-        if (enemy != null && !isInvulnerable)
+        if (enemy != null && !isInvulnerable && !isDead)
         {
             playerStats.PlayerHealth -= enemy.ContactDamage;
             StartCoroutine(MakeInvulnerable(0.4f));
-            if (playerStats.PlayerHealth == 0)
+            if (playerStats.PlayerHealth <= 0)
             {
+                isDead = true;
                 acceptingInput = false;
                 animator.Play("Death");
                 GameEvents.PlayerDeath();

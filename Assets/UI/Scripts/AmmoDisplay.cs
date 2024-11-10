@@ -16,7 +16,7 @@ public class AmmoDisplay : MonoBehaviour
 
     private void Update()
     {
-        text.text = $"Ammo: {player.AmmoCount.ToString("000")}";
+        text.text = $"Ammo: {player.AmmoCount.ToString("000")}/{player.MaxAmmo.ToString("000")}";
 
     }
 }

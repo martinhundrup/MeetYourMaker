@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4061432531178106122}
   - component: {fileID: 7444119482078840379}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 958891095257296047}
   - component: {fileID: 3096652984210560094}
   - component: {fileID: 351946843703079981}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1944349065142478018}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 7748344184504414435}
   - component: {fileID: 9103944159671158571}
   - component: {fileID: 3048898653187014377}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 2201282048590002555}
   - component: {fileID: 8218433722292197010}
   - component: {fileID: 1843523392497618410}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 3217729316948761717}
   - component: {fileID: 1399805316593272990}
   - component: {fileID: 5464724151294001234}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zombie corpse 2
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -494,6 +494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxTag: 
   health: 3
+  acornDrops: {fileID: 0}
+  numAcorns: 0
 --- !u!70 &1399805316593272990
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -551,7 +553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2384821572288897268}
   - component: {fileID: 1018115573090386201}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

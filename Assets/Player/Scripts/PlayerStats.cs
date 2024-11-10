@@ -91,7 +91,11 @@ public class PlayerStats : ScriptableObject
     public int AmmoCount
     {
         get { return ammoCount; }
-        set { ammoCount = value; }
+        set 
+        { 
+            ammoCount = value;
+            if (ammoCount > maxAmmo) ammoCount = maxAmmo;
+        }
     }
 
     public int MaxAmmo
@@ -182,6 +186,15 @@ public class PlayerStats : ScriptableObject
     #endregion
 
     [Button]
+
+    // sets values to what they should be on respawn
+    public void Respawn()
+    {
+        playerHealth = playerMaxHealth;
+        ammoCount = 20;
+        exp = 0;
+        OnDamageTaken?.Invoke();
+    }
     public void ResetDefaults()
     {
         playerSpeed = 5f;

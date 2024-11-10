@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 527063269113247113}
   - component: {fileID: 2552679832368591713}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8029698490919940398}
   - component: {fileID: 6564715716601038724}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Boulder Decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

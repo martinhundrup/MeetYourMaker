@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9075943441660743735}
   - component: {fileID: 4280431169967328073}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4501447570657540873}
   - component: {fileID: 8757371992780083933}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tree Decor 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}

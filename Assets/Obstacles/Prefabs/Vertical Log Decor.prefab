@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7455946240102376493}
   - component: {fileID: 5863048458297920686}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Vertical Log Decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477075139700861397}
   - component: {fileID: 3797707868060423568}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5304633969192543702}
   - component: {fileID: 4247694170625587620}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3665836049689672874}
   - component: {fileID: 4979006776276065691}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stump Decor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

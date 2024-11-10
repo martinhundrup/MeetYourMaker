@@ -10,17 +10,42 @@ public class ModifierDisplay : MonoBehaviour
     [SerializeField] private TypewriterEffect descriptionText;
     [SerializeField] private TypewriterEffect costText;
     private Modifier mod;
+    [SerializeField] private bool defaultMod;
 
     private void Awake()
     {
         Initialize(ModifierGenerator.CreateModifier());
+        GameEvents.OnPlayerRespawn += Disable;
+    }
+
+    private void Disable()
+    {
+        GetComponent<Button>().interactable = false;
+    }
+
+    public void Chosen()
+    {
+        DataDictionary.PlayerStats.ApplyModifier(mod);
+        GameEvents.PlayerRespawn();
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.OnPlayerRespawn -= Disable;
     }
 
     public void Initialize(Modifier _mod)
     {
-        mod = _mod;
-        StartCoroutine(nameText.SetText(mod.name));
-        StartCoroutine(descriptionText.SetText(mod.description));
-        StartCoroutine(costText.SetText($"Cost: {mod.cost}"));
+        if (!defaultMod)
+        {
+            mod = _mod;
+            StartCoroutine(nameText?.SetText(mod.name));
+            StartCoroutine(descriptionText?.SetText(mod.description));
+            StartCoroutine(costText?.SetText($"Cost: {mod.cost}"));
+        }
+
+        if (defaultMod) mod = ModifierGenerator.GetModifier();
+
+        if (mod.cost > DataDictionary.PlayerStats.EXP) GetComponent<Button>().interactable = false;
     }
 }
