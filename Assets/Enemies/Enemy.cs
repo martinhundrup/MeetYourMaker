@@ -11,6 +11,7 @@ public abstract class Enemy : Breakable
     public event EnemyDied OnEnemyDied;
 
     [SerializeField] private GameObject corpse; // what to spawn on death
+    [SerializeField] private GameObject exp;
     [SerializeField] private float cost; // how many difficulty points the enemy is worth
     protected PlayerController player;
     protected Rigidbody2D rb;
@@ -51,6 +52,13 @@ public abstract class Enemy : Breakable
         {
             Instantiate(corpse).transform.position = this.transform.position;
         }
+
+        // spawn exp
+        for (int i = 0; i < cost; i++)
+        {
+            Instantiate(exp).transform.position = this.transform.position;
+        }
+
         if (OnEnemyDied != null) OnEnemyDied(this);
     }
 

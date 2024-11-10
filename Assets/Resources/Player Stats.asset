@@ -13,24 +13,25 @@ MonoBehaviour:
   m_Name: Player Stats
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  playerMaxHealth: 10
-  playerHealth: 10
-  ammoCount: 5920
-  maxAmmo: 10
+  playerMaxHealth: 5
+  playerHealth: 5
+  ammoCount: 20
+  maxAmmo: 50
+  exp: 0
   hasRoll: 0
   rollSpeed: 8
   rollDuration: 0.3
   hasCrouch: 0
-  crouchRegeneration: 0
+  crouchRegeneration: 0.1
   canShoot: 1
-  bulletCount: 6
+  bulletCount: 4
   bulletSpread: 10
   bulletSpeed: 10
-  reloadTime: 0.6
+  reloadTime: 1
   bullet: {fileID: 5134309796571233652, guid: cde5ab9fdfc8f4d43b15a896aec22d1f, type: 3}
-  bulletDamage: 0.5
+  bulletDamage: 0.2
   bulletSize: 1
   knockbackForce: 0.1
-  stunTime: 0
+  stunTime: 0.1
   piercing: 0
   bounces: 0

@@ -199,6 +199,7 @@ MonoBehaviour:
   hitboxTag: Enemy
   health: 3
   corpse: {fileID: 0}
+  exp: {fileID: 5978359107671657541, guid: b467ca42fc042d4498bc3a6f431e86e7, type: 3}
   cost: 1.5
   speed: 5
   hasHitstun: 1

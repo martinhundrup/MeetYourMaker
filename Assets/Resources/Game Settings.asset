@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomSize: {x: 30, y: 18}
   roomBorder: 3
-  gameLevel: 0
+  gameLevel: 20

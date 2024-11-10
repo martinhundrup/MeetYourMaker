@@ -43,7 +43,6 @@ public class EnemyGenerator : ScriptableObject
     {
         CalculateBalance();
         index = _index;
-        
 
         roomHeight = DataDictionary.GameSettings.RoomSize.x;
         roomWidth = DataDictionary.GameSettings.RoomSize.y;
@@ -53,25 +52,40 @@ public class EnemyGenerator : ScriptableObject
 
         List<int> availableTiles = new List<int>();
 
-        for (int y = 0; y < roomHeight; y++)
+        for (int y = 1; y < roomHeight - 1; y++)
         {
-            for (int x = 0; x < roomWidth; x++)
+            for (int x = 1; x < roomWidth - 1; x++)
             {
                 int i = Convert2DTo1DIndex(y, x);
-                if (obstacleTiles[i] == 0 && wallTiles[i] != 0) // if empty tile
+                if (obstacleTiles[i] == 0 && wallTiles[i] != 0) // if empty tile and not next to a wall
                 {
-                    //Debug.Log($"Added to available tiles value:{roomTiles[i]}");
-                    availableTiles.Add(i);
+                    // Check neighboring tiles for obstacles
+                    bool hasNeighboringObstacle = false;
+                    int[] neighborOffsets = { -1, 1, -roomWidth, roomWidth }; // left, right, up, down
+
+                    foreach (int offset in neighborOffsets)
+                    {
+                        int neighborIndex = i + offset;
+                        if (neighborIndex >= 0 && neighborIndex < obstacleTiles.Length && obstacleTiles[neighborIndex] != 0)
+                        {
+                            hasNeighboringObstacle = true;
+                            break;
+                        }
+                    }
+
+                    if (!hasNeighboringObstacle)
+                    {
+                        availableTiles.Add(i);
+                    }
                 }
             }
         }
 
         var enemy = GetRandomEnemy();
         int enemyCount = 0;
-        while (enemy != null)
+        while (enemy != null && availableTiles.Count > 0)
         {
             int i = availableTiles[UnityEngine.Random.Range(0, availableTiles.Count)];
-            //roomTiles[i] = index;
             availableTiles.Remove(i);
 
             if (OnSpawnEnemy != null)

@@ -178,6 +178,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d841c21b7406c0b45a87e0deb1ba3aec, type: 2}
   - {fileID: 11400000, guid: 8dccf76a6adf5c240b0110d8be5b422d, type: 2}
   - {fileID: 11400000, guid: 505ddbf0ba6c15c408fe2c4e084f19da, type: 2}
+  - {fileID: 11400000, guid: 3d1b1666468377244bfe63d3a4ef9d42, type: 2}
   enemies:
   - {fileID: 11400000, guid: 4d1d327282ff3da4db459f1bed79d03d, type: 2}
   dungeonExit: {fileID: 682478617919081182, guid: 9719ab485a8693c4ba4b187ae396d94e, type: 3}
