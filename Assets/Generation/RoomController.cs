@@ -53,7 +53,7 @@ public class RoomController : MonoBehaviour
         {
             Debug.Log("room cleared!");
 
-            Instantiate(endOfLevel).transform.position = _enemy.transform.position;
+            Instantiate(endOfLevel).transform.position = Vector2.zero;
         }
     }
 }

@@ -12,6 +12,7 @@ public class CentralGameManager : MonoBehaviour
 
     // places we'll need likely access to
     private GameSettings gameSettings;
+    private PlayerStats playerStats;
     private bool isPaused = false;
 
     [SerializeField] private SceneField openingScene;
@@ -32,6 +33,7 @@ public class CentralGameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         gameSettings = DataDictionary.GameSettings;
+        playerStats = DataDictionary.PlayerStats;
 
         SubscribeGameEvents();
     }
@@ -67,6 +69,7 @@ public class CentralGameManager : MonoBehaviour
     private void OnGameStart()
     {
         gameSettings.GameLevel = 0;
+        playerStats.ResetDefaults();
         SceneManager.LoadScene(openingScene.BuildIndex);
     }
 

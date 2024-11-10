@@ -179,6 +179,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 838c8196e52eb964b8ba2d7793e8b85e, type: 2}
   - {fileID: 11400000, guid: 85603da81d714ed4c89b74d0d9a50f70, type: 2}
   - {fileID: 11400000, guid: 3d1b1666468377244bfe63d3a4ef9d42, type: 2}
+  - {fileID: 11400000, guid: f30f2807d8b0005418f0e9d06d036612, type: 2}
   enemies:
   - {fileID: 11400000, guid: 3124364915526b94591512f36a5e0e38, type: 2}
   dungeonExit: {fileID: 682478617919081182, guid: 9719ab485a8693c4ba4b187ae396d94e, type: 3}
@@ -51927,6 +51928,10 @@ PrefabInstance:
     - target: {fileID: 1044853552627874265, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681446515052306558, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 5435786571337702781, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
       propertyPath: m_Pivot.x

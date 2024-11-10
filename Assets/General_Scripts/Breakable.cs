@@ -10,9 +10,13 @@ public class Breakable : MonoBehaviour
 
     [SerializeField] private string hitboxTag; // immune to hitboxes of the same tag
     [SerializeField] private float health;
+    [SerializeField] private GameObject acornDrops;
+    [SerializeField] private int numAcorns;
     private float maxHealth;
     protected Blink blink;
     protected HealthBar healthBar;
+
+    private bool isDead = false;
 
     protected void Awake()
     {
@@ -59,9 +63,15 @@ public class Breakable : MonoBehaviour
 
     private void CheckHealth()
     {
+        if (isDead) return;
         if (health <= 0) 
-        {        
-            
+        {
+            isDead = true;
+            for (int i = 0; i < numAcorns; i++)
+            {
+                Instantiate(acornDrops).transform.position = this.transform.position;
+            }
+
             Destroy(this.gameObject); 
         }
     }    

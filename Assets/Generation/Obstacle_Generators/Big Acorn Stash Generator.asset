@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbceccf9d612764fbd37f8f85945137, type: 3}
-  m_Name: Game Settings
+  m_Script: {fileID: 11500000, guid: 53b0f2753a1fed04b816cf3ead033692, type: 3}
+  m_Name: Big Acorn Stash Generator
   m_EditorClassIdentifier: 
-  roomSize: {x: 30, y: 18}
-  roomBorder: 3
-  gameLevel: 0
+  threshold: 0.8
+  scale: 0.5
+  obstaclePrefab: {fileID: 160847757094476499, guid: a948728061c1c9546a9417723922e610, type: 3}
+  decorPrefab: {fileID: 0}

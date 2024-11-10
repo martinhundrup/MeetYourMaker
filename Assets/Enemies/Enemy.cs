@@ -74,6 +74,7 @@ public abstract class Enemy : Breakable
     // Temporarily pauses the enemy when hit.
     protected IEnumerator HitStun(Hitbox _hitbox)
     {
+        if (isInHitstun) yield break;
         this.isInHitstun = true;
         var s = this.speed;
         this.speed = 0;
