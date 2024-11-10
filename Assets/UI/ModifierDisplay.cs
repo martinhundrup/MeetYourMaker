@@ -38,6 +38,11 @@ public class ModifierDisplay : MonoBehaviour
         GameEvents.OnPlayerRespawn -= Disable;
     }
 
+    private void Update()
+    {
+        GetComponent<Button>().interactable = mod.cost <= DataDictionary.PlayerStats.EXP;
+    }
+
     public void Initialize(Modifier _mod)
     {
         if (!defaultMod)

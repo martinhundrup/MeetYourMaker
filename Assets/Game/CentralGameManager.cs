@@ -82,6 +82,7 @@ public class CentralGameManager : MonoBehaviour
     {
         gameSettings.GameLevel = 0;
         playerStats.ResetDefaults();
+        HUDController.instance?.EnableHUD(false);
         SceneManager.LoadScene(openingScene.BuildIndex);
     }
 
@@ -105,7 +106,7 @@ public class CentralGameManager : MonoBehaviour
         SceneManager.LoadScene(openingScene.BuildIndex);
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(HUDController.instance.FadeToClear());
-        HUDController.instance.EnableHUD(true);
+        HUDController.instance.EnableHUD(false);
     }
 
 
@@ -124,20 +125,31 @@ public class CentralGameManager : MonoBehaviour
         yield return StartCoroutine(HUDController.instance.FadeToClear());
     }
 
+    private IEnumerator PlayerWin()
+    {
+        HUDController.instance.EnableHUD(false);
+        yield return StartCoroutine(HUDController.instance.FadeToOpaque());
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(modifierUpgrades.BuildIndex);
+        yield return new WaitForSeconds(.5f);
+        yield return StartCoroutine(HUDController.instance.FadeToClear());
+    }
+
     private void LoadLevel()
     {
         gameSettings.GameLevel++;
 
         if (gameSettings.GameLevel % 5 == 0 && !betweenLevels)
         {
-            Debug.Log("hello");
             betweenLevels = true;
-            StartCoroutine(PlayerDeath());
+            StartCoroutine(PlayerWin());
             return;
         }
         Debug.Log(gameSettings.GameLevel % 5);
         betweenLevels = false;
 
+
+        if (gameSettings.GameLevel > 0) HUDController.instance.EnableHUD(true);
 
         if (gameSettings.GameLevel < 5) // first five floors are level 1
         {

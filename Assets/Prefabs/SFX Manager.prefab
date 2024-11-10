@@ -146,7 +146,9 @@ MonoBehaviour:
   enemyFire: {fileID: 8300000, guid: ee9b37540e6ec7c47a4c29ad25c8bc1a, type: 3}
   hit: {fileID: 8300000, guid: d6cc6c6eccc27934699cb3d677926d09, type: 3}
   expCollect: {fileID: 8300000, guid: fe202bdda7f413d42965c1e0bd6fc342, type: 3}
-  ammoCollect: {fileID: 8300000, guid: c98f5c0254603fc4398d62dc0c61a836, type: 3}
+  ammoCollect: {fileID: 8300000, guid: 8114c291292c6094e83ba3ac8e4f46e8, type: 3}
   shroomieDeath: {fileID: 8300000, guid: b2136b88ea162514e83345a73d538701, type: 3}
   win: {fileID: 8300000, guid: 2502909991cf1f34aa1ae8fbf5cb1202, type: 3}
-  open: {fileID: 8300000, guid: 1124b4ee671ddbb42ac5d3c57e4246b9, type: 3}
+  open: {fileID: 8300000, guid: acf25d1c0447f8242a625857a45e3120, type: 3}
+  noAmmo: {fileID: 8300000, guid: 2dab080953fabd14a9eead981fab47d0, type: 3}
+  zombieDeath: {fileID: 8300000, guid: 62fa95c45638e4249b7e66d759a1f9bc, type: 3}

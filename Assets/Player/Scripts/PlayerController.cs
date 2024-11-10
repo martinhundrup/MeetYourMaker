@@ -105,6 +105,10 @@ public class PlayerController : MonoBehaviour
 
             StartCoroutine(CooldownTimer(playerStats.ReloadTime));
         }
+        else if (Input.GetButtonDown("Fire"))
+        {
+            SFXManager.instance.PlayNoAmmo();
+        }
     }
 
     private void Movement()
@@ -150,6 +154,10 @@ public class PlayerController : MonoBehaviour
     private void Crouch()
     {
         if (rolling || !playerStats.HasCrouch) return;
+
+        // heal when crouched
+        if (crouched) playerStats.PlayerHealth += playerStats.PlayerMaxHealth * playerStats.CrouchRegeneration * Time.deltaTime;
+
         if (acceptingInput && Input.GetButtonDown("Crouch"))
         {
             crouched = true;

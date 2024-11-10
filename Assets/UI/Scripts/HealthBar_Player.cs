@@ -13,12 +13,11 @@ public class HealthBar_Player : MonoBehaviour
     {
         slider = GetComponent<Slider>();
         stats = DataDictionary.PlayerStats;
-        stats.OnDamageTaken += UpdateDisplay;
 
         GetComponent<RectTransform>().sizeDelta = new Vector2(stats.PlayerMaxHealth * 20, 50);
     }
 
-    private void UpdateDisplay()
+    private void Update()
     {
         slider.value = stats.PlayerHealth / stats.PlayerMaxHealth;
     }

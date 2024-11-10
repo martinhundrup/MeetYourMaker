@@ -14,6 +14,8 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioClip shroomieDeath;
     [SerializeField] private AudioClip win;
     [SerializeField] private AudioClip open;
+    [SerializeField] private AudioClip noAmmo;
+    [SerializeField] private AudioClip zombieDeath;
 
     private void Awake()
     {
@@ -25,6 +27,16 @@ public class SFXManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = BGM;
         audioSource.Play();
+    }
+
+    public void PlayNoAmmo()
+    {
+        audioSource.PlayOneShot(noAmmo);
+    }
+
+    public void PlayZombieDeath()
+    {
+        audioSource.PlayOneShot(zombieDeath);
     }
 
     public void PlayEnemyFire()

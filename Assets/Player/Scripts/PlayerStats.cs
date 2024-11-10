@@ -212,8 +212,8 @@ public class PlayerStats : ScriptableObject
         bulletCount = 5;
         bulletSpread = 10f;
         bulletSpeed = 10f;
-        reloadTime = .8f;
-        bulletDamage = 4f;
+        reloadTime = 1f;
+        bulletDamage = .3f;
         bulletSize = 1f;
         knockbackForce = 0.1f;
         stunTime = 0.1f;
@@ -229,7 +229,7 @@ public class PlayerStats : ScriptableObject
         bulletSpeed *= 1f + mod.bulletSpeed;
         bulletCount += mod.bulletCount;
         reloadTime *= 1f + mod.reloadTime;
-        bulletSpread *= 1f + mod.bulletSpread;
+        bulletSpread += mod.bulletSpread;
         bulletSize *= 1f + mod.bulletSize;
         bulletDamage *= 1f + mod.bulletDamage;
         if (mod.bulletPiercing) piercing = true;

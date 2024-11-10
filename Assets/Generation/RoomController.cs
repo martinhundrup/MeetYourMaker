@@ -49,7 +49,8 @@ public class RoomController : MonoBehaviour
         _enemy.OnEnemyDied -= EnemyDeath;
 
         if (enemyCount <= 0)
-        { 
+        {
+            SFXManager.instance.PlayOpen();
             Instantiate(endOfLevel).transform.position = Vector2.zero;
         }
     }

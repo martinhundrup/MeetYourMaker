@@ -11,7 +11,12 @@ public class Zombie : Enemy
     private bool isJumping;
     private Animator animator;
 
-
+    new private void OnDestroy()
+    {
+        base.OnDestroy();
+        if (Health <= 0)
+            SFXManager.instance.PlayZombieDeath();
+    }
 
     private void OnEnable()
     {

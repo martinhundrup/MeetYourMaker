@@ -231,6 +231,7 @@ public static class ModifierGenerator
 
             mod.name = "Crouch Ability";
             mod.description = "Unlocks the ability for Shroomie to crouch.";
+            mod.cost = 50;
         }
         else if (idx == 13) // 14 - crouch regen
         {
@@ -240,6 +241,7 @@ public static class ModifierGenerator
 
                 mod.name = "Crouch Ability";
                 mod.description = "Unlocks the ability for Shroomie to crouch.";
+                mod.cost = 50;
             }
             else
             {
@@ -259,6 +261,7 @@ public static class ModifierGenerator
 
             mod.name = "Roll Ability";
             mod.description = "Unlocks the ability for Shroomie to perform a roll maneuver.";
+            mod.cost = 40;
         }
 
         return mod;

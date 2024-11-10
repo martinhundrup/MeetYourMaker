@@ -46,7 +46,7 @@ public abstract class Enemy : Breakable
         base.Awake();
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         if (Health > 0) return; // deleted on scene end, so don't do anything else
         if (corpse != null) 

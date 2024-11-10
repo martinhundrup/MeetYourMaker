@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   playerMaxHealth: 5
-  playerHealth: 5
-  ammoCount: 30
+  playerHealth: 4.6208687
+  ammoCount: 24
   maxAmmo: 50
-  exp: 11
+  exp: 8
   hasRoll: 0
   rollSpeed: 8
   rollDuration: 0.3
-  hasCrouch: 0
+  hasCrouch: 1
   crouchRegeneration: 0.1
-  canShoot: 0
-  bulletCount: 4
+  canShoot: 1
+  bulletCount: 5
   bulletSpread: 10
   bulletSpeed: 10
-  reloadTime: 0.8
+  reloadTime: 1
   bullet: {fileID: 5134309796571233652, guid: cde5ab9fdfc8f4d43b15a896aec22d1f, type: 3}
-  bulletDamage: 0.4
+  bulletDamage: 0.3
   bulletSize: 1
   knockbackForce: 0.1
   stunTime: 0.1
