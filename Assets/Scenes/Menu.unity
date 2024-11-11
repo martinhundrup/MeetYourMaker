@@ -695,7 +695,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: rip and tEar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f46c0fae42c3ab46bb2febfe4adf3df, type: 2}
   m_sharedMaterial: {fileID: 3237575637584772817, guid: 7f46c0fae42c3ab46bb2febfe4adf3df, type: 2}
@@ -957,7 +957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: shroomwood
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55690200a816b2e4da9d613513043e26, type: 2}
   m_sharedMaterial: {fileID: 1612370829766377983, guid: 55690200a816b2e4da9d613513043e26, type: 2}

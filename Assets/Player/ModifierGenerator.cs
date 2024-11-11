@@ -110,9 +110,9 @@ public static class ModifierGenerator
         }
         else if (idx == 1) // 1 - shroomie max HP
         {
-            if (strength == 0) mod.maxHP = .15f; // 5 % increase
-            else if (strength == 1) mod.maxHP = .25f; // 10 % increase
-            else mod.maxHP = .40f; // 20 % increase
+            if (strength == 0) mod.maxHP = .25f; // 5 % increase
+            else if (strength == 1) mod.maxHP = .5f; // 10 % increase
+            else mod.maxHP = .75f; // 20 % increase
 
             if (neg) mod.maxHP *= -1; // make a decrease
             mod.name = "Max Health";
