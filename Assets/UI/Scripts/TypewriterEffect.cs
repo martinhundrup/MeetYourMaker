@@ -10,6 +10,7 @@ public class TypewriterEffect : MonoBehaviour
 {
     private TextMeshProUGUI textBox;
     [SerializeField] private GameObject idleArrow;
+    [SerializeField] private float waitTime = 0.01f;
 
     private void Awake()
     {
@@ -53,7 +54,7 @@ public class TypewriterEffect : MonoBehaviour
         for (; i <= maxChars; i++)
         {
             textBox.maxVisibleCharacters = i;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(waitTime);
         }
 
         textBox.maxVisibleCharacters = i;
