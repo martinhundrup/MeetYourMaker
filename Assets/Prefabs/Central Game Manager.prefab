@@ -75,10 +75,10 @@ MonoBehaviour:
     _path: Assets/Scenes/Level 5.unity
     _buildIndex: 6
   level6:
-    _sceneOB: {fileID: 0}
-    _name: 
-    _path: 
-    _buildIndex: 0
+    _sceneOB: {fileID: 102900000, guid: e82f7a7fb21328941935a9d601b775ae, type: 3}
+    _name: Level 6
+    _path: Assets/Scenes/Level 6.unity
+    _buildIndex: 8
   modifierUpgrades:
     _sceneOB: {fileID: 102900000, guid: 8aebc31f409d9684b827f842cd7011e5, type: 3}
     _name: UI Testing

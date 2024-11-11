@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -7589951899439363807, guid: 504411330dcc3a342aacebd74306c7b0, type: 3}
+    - target: {fileID: 8232193512897876234, guid: d2c3b2af3d9c53543a214c4e89012523, type: 3}
+      propertyPath: aggression
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8543545670908440629, guid: d2c3b2af3d9c53543a214c4e89012523, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

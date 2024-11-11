@@ -5564,7 +5564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxTag: Enemy
-  health: 15
+  health: 50
   acornDrops: {fileID: 0}
   numAcorns: 0
   corpse: {fileID: 6539512322366972734, guid: d58c2b9fab70fb642b8e068cf5394c0a, type: 3}

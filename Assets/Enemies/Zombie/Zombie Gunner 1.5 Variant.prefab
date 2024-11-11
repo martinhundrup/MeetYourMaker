@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie Gunner 1.5 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6864797165279373205, guid: 115296076f4221b45938867235c39644, type: 3}
+      propertyPath: aggression
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7789815508946461463, guid: 115296076f4221b45938867235c39644, type: 3}
       propertyPath: m_Enabled
       value: 0

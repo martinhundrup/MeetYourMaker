@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxTag: Enemy
-  health: 15
+  health: 50
   acornDrops: {fileID: 0}
   numAcorns: 0
   corpse: {fileID: 6539512322366972734, guid: d58c2b9fab70fb642b8e068cf5394c0a, type: 3}
@@ -284,6 +284,7 @@ MonoBehaviour:
   splatter: {fileID: 8747640860640431247, guid: 5b07b2ace1c379846ac91731e5a112ae, type: 3}
   jumpInterval: 1
   intervalMargin: 1
+  isGunner: 0
 --- !u!1001 &1870418661747485807
 PrefabInstance:
   m_ObjectHideFlags: 0

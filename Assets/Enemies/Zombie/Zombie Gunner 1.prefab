@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxTag: Enemy
-  health: 5
+  health: 8
   acornDrops: {fileID: 3193441283192322431, guid: 29c759d198db5e943b61623bdce2977f, type: 3}
   numAcorns: 5
   corpse: {fileID: 6539512322366972734, guid: 04fbde6edf47dda4baa5c063f03babe7, type: 3}
@@ -562,8 +562,8 @@ MonoBehaviour:
   speed: 2
   hasHitstun: 0
   contactDamage: 1.5
-  aggression: 0.7
-  splatter: {fileID: 0}
+  aggression: 1
+  splatter: {fileID: 8747640860640431247, guid: 5b07b2ace1c379846ac91731e5a112ae, type: 3}
   jumpInterval: 2
   intervalMargin: 1
   isGunner: 1

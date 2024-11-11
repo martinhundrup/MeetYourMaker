@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  damage: 2
+  damage: 5
   spread: 0
   size: 2
   bounces: 0

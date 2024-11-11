@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 5
   playerMaxHealth: 5
-  playerHealth: 4.6208687
-  ammoCount: 24
+  playerHealth: 5
+  ammoCount: 38
   maxAmmo: 50
-  exp: 8
+  exp: 0
   hasRoll: 0
   rollSpeed: 8
   rollDuration: 0.3
-  hasCrouch: 1
+  hasCrouch: 0
   crouchRegeneration: 0.1
-  canShoot: 1
+  canShoot: 0
   bulletCount: 5
   bulletSpread: 10
   bulletSpeed: 10
