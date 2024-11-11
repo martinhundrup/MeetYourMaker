@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b0f2753a1fed04b816cf3ead033692, type: 3}
+  m_Name: Albino Mushroom Generator
+  m_EditorClassIdentifier: 
+  threshold: 0.8
+  scale: 0.15
+  obstaclePrefab: {fileID: 8421835931432786012, guid: 228fa3b51e28a1947978192ce5e357bf, type: 3}
+  decorPrefab: {fileID: 0}

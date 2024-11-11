@@ -141,7 +141,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099f9ccd7603fd84ab94e6728715ba17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGM: {fileID: 8300000, guid: 42ce2cb544eec4345aa6545149f60fc7, type: 3}
+  defaultBGM: {fileID: 8300000, guid: 42ce2cb544eec4345aa6545149f60fc7, type: 3}
+  menuBGM: {fileID: 8300000, guid: 5adea5741b60038468c4165762f47d54, type: 3}
+  level1BGM: {fileID: 8300000, guid: 9d39eea80d3d41b4a92aa53498e42263, type: 3}
+  level2BGM: {fileID: 8300000, guid: 946ab373b0d6a9e45b2030cb9a991bbe, type: 3}
+  level3BGM: {fileID: 8300000, guid: 23bc1381b39da59468591cfebc15422d, type: 3}
+  level4BGM: {fileID: 8300000, guid: 10648e52090c12d42a4018921318d0d0, type: 3}
+  level5BGM: {fileID: 8300000, guid: 21399c8be27685f4cbd929efa9ca6e7d, type: 3}
+  level6BGM: {fileID: 8300000, guid: 5d818435e42e4ff4790ab2fc7e537ae0, type: 3}
+  modifierBGM: {fileID: 8300000, guid: dcf111c76f0d8414b93e779b0d906fc6, type: 3}
   fire: {fileID: 8300000, guid: febf14b119840e84a902ac8fba988c32, type: 3}
   enemyFire: {fileID: 8300000, guid: ee9b37540e6ec7c47a4c29ad25c8bc1a, type: 3}
   hit: {fileID: 8300000, guid: d6cc6c6eccc27934699cb3d677926d09, type: 3}

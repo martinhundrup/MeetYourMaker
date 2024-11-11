@@ -36,6 +36,7 @@ public class RoomController : MonoBehaviour
 
         foreach (Enemy enemy in enemies)
         {
+            if (enemy.GetType() == typeof(NPC)) continue; // don't require the murdering of albinos
             enemyCount++;
 
             enemy.OnEnemyDied += EnemyDeath;

@@ -1,3 +1,9 @@
 pixel font: https://www.dafont.com/zacchary-dempsey-plante.d6765
 sfx: https://opengameart.org/content/handling-guns
 more sfx: https://opengameart.org/content/512-sound-effects-8-bit-style
+metal font: https://www.dafont.com/gun-metal.font
+other metal font: https://www.dafont.com/crush-metal.font
+more metal font: https://www.dafont.com/metalshow.font
+title screen: Discord @SwiftShadowFox
+soundtrack:
+	https://opengameart.org/content/8-bit-beatem-up-soundtrack

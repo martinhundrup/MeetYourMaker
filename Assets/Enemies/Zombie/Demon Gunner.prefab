@@ -5577,6 +5577,7 @@ MonoBehaviour:
   splatter: {fileID: 8747640860640431247, guid: 5b07b2ace1c379846ac91731e5a112ae, type: 3}
   jumpInterval: 1
   intervalMargin: 1
+  isGunner: 1
 --- !u!114 &5630462672540865145
 MonoBehaviour:
   m_ObjectHideFlags: 0

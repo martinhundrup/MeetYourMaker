@@ -39,7 +39,7 @@ public class WeaponSprite : MonoBehaviour
 
     private void Update()
     {
-        if (!targetsPlayer && DataDictionary.PlayerStats.PlayerHealth <= 0) return;
+        if (!targetsPlayer && DataDictionary.PlayerStats.PlayerHealth <= 0 || CentralGameManager.Paused) return;
 
         if (targetsPlayer)
         {

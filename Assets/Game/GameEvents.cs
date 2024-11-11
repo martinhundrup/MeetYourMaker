@@ -7,11 +7,17 @@ public static class GameEvents
 {
     public static event Action<Transform> OnPlayerEnterRoom;
     public static event Action<ItemData> OnItemPickedUp;
-    public static event Action<bool> OnGamePaused;
+    public static event Action<bool> OnGamePaused; // true for paused, false for unpaused
     public static event Action OnLevelEnd;
     public static event Action OnGameStart; // reset shroomies values, loading from menu
     public static event Action OnPlayerDeath;
     public static event Action OnPlayerRespawn;
+    public static event Action OnExitToMainMenu;
+
+    public static void ExitToMainMenu()
+    {
+        OnExitToMainMenu?.Invoke();
+    }
 
     public static void PlayerRespawn()
     {

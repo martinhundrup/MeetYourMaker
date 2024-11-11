@@ -8,8 +8,9 @@ public class Zombie : Enemy
 
     [SerializeField] protected float jumpInterval; // the base time between jumps.
     [SerializeField] protected float intervalMargin; // the +/- time the interval is randomized to
+    [SerializeField] private bool isGunner = false; // always faces player
     private bool isJumping;
-    private Animator animator;
+    protected Animator animator;
 
     new private void OnDestroy()
     {
@@ -24,8 +25,14 @@ public class Zombie : Enemy
         StartCoroutine(JumpTimer());
     }
 
+    private void Update()
+    {
+        if (isGunner)
+            sr.flipX = player.transform.position.x > this.transform.position.x;
+    }
+
     // Continuously jump at semi random intervals.
-    private IEnumerator JumpTimer()
+    protected virtual IEnumerator JumpTimer()
     {
         while (true)
         {
@@ -36,13 +43,16 @@ public class Zombie : Enemy
             rb.velocity = dir * speed;
 
             animator.Play("run");
-            if (dir.x > 0)
+            if (!isGunner)
             {
-                sr.flipX = true;
-            }
-            else 
-            { 
-                sr.flipX = false;
+                if (dir.x > 0)
+                {
+                    sr.flipX = true;
+                }
+                else
+                {
+                    sr.flipX = false;
+                }
             }
 
             yield return new WaitForSeconds(jumpInterval + Random.Range(-intervalMargin, intervalMargin));
@@ -52,7 +62,7 @@ public class Zombie : Enemy
         }
     }
 
-    private Vector2 FindDirection()
+    protected Vector2 FindDirection()
     {
         if (Random.Range(0, 1f) > aggression)
             return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;

@@ -55,7 +55,6 @@ public class Breakable : MonoBehaviour
 
     virtual protected void TakeDamage(Hitbox _hitbox)
     {
-        Debug.Log(blink);
         Health -= _hitbox.Damage;
         blink.BlinkAmount(1);
         if (OnDamageTaken != null)

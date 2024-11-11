@@ -31,6 +31,10 @@ public class ModifierDisplay : MonoBehaviour
 
         if (defaultMod)
             GameEvents.PlayerRespawn();
+
+        // destroy this to prevent multiple purchases
+        SFXManager.instance.PlayAmmoCollect();
+        Destroy(this.gameObject);
     }
 
     private void OnDestroy()

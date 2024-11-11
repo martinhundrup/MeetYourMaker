@@ -10,16 +10,18 @@ public class Acorn : MonoBehaviour
     private Transform playerTransform;
     [SerializeField] private float attractionDistance = 2;
     [SerializeField] private float attractionSpeed = 2;
+    private PlayerStats playerStats;
 
     protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerTransform = FindObjectOfType<PlayerController>().transform;
+        playerStats = DataDictionary.PlayerStats;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && playerStats.AmmoCount < playerStats.MaxAmmo)
         {
             SFXManager.instance.PlayAmmoCollect();
             DataDictionary.PlayerStats.AmmoCount += ammo;
@@ -39,7 +41,7 @@ public class Acorn : MonoBehaviour
             float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
             // If within attraction distance, move towards the player
-            if (distanceToPlayer < attractionDistance)
+            if (distanceToPlayer < attractionDistance && playerStats.AmmoCount < playerStats.MaxAmmo)
             {
                 Vector2 direction = (playerTransform.position - transform.position).normalized;
                 rb.velocity = direction * attractionSpeed;

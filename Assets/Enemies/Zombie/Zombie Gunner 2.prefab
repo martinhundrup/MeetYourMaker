@@ -722,8 +722,10 @@ MonoBehaviour:
   hasHitstun: 0
   contactDamage: 1.5
   aggression: 0.7
+  splatter: {fileID: 0}
   jumpInterval: 2
   intervalMargin: 1
+  isGunner: 1
 --- !u!114 &7112290605643086297
 MonoBehaviour:
   m_ObjectHideFlags: 0

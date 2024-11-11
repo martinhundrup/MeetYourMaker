@@ -5,7 +5,18 @@ public class SFXManager : MonoBehaviour
 {
     public static SFXManager instance;
     private AudioSource audioSource;
-    [SerializeField] private AudioClip BGM;
+    [Header("Music")]
+    [SerializeField] private AudioClip defaultBGM;
+    [SerializeField] private AudioClip menuBGM;
+    [SerializeField] private AudioClip level1BGM;
+    [SerializeField] private AudioClip level2BGM;
+    [SerializeField] private AudioClip level3BGM;
+    [SerializeField] private AudioClip level4BGM;
+    [SerializeField] private AudioClip level5BGM;
+    [SerializeField] private AudioClip level6BGM;
+    [SerializeField] private AudioClip modifierBGM;
+
+    [Header("SFX")]
     [SerializeField] private AudioClip fire;
     [SerializeField] private AudioClip enemyFire;
     [SerializeField] private AudioClip hit;
@@ -25,8 +36,89 @@ public class SFXManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = BGM;
-        audioSource.Play();
+        var manager = FindObjectOfType<CentralGameManager>();
+        if (manager != null) manager.UpdateMusic();
+    }
+
+    public void PlayDefaultBGM()
+    {
+        if (audioSource.clip != defaultBGM)
+        {
+            audioSource.clip = defaultBGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayModifierBGM()
+    {
+        if (audioSource.clip != modifierBGM)
+        {
+            audioSource.clip = modifierBGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayMenuBGM()
+    {
+        if (audioSource.clip != menuBGM)
+        {
+            audioSource.clip = menuBGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayLevel1BGM()
+    {
+        if (audioSource.clip != level1BGM)
+        {
+            audioSource.clip = level1BGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayLevel2BGM()
+    {
+        if (audioSource.clip != level2BGM)
+        {
+            audioSource.clip = level2BGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayLevel3BGM()
+    {
+        if (audioSource.clip != level3BGM)
+        {
+            audioSource.clip = level3BGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayLevel4BGM()
+    {
+        if (audioSource.clip != level4BGM)
+        {
+            audioSource.clip = level4BGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayLevel5BGM()
+    {
+        if (audioSource.clip != level5BGM)
+        {
+            audioSource.clip = level5BGM;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayLevel6BGM()
+    {
+        if (audioSource.clip != level6BGM)
+        {
+            audioSource.clip = level6BGM;
+            audioSource.Play();
+        }
     }
 
     public void PlayNoAmmo()

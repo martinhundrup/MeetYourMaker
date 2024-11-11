@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Timeline;
 using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour
         // disable attacking on level 0
         playerStats.UsesAmmo = gameSettings.GameLevel != 0;
 
+        if (gameSettings.GameLevel != 0)
+            StartCoroutine(MakeInvulnerable(1f));
     }
 
     private void OnDestroy()
@@ -137,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     private void FindFacingDirection()
     {
-        if (playerStats.PlayerHealth <= 0) return;
+        if (playerStats.PlayerHealth <= 0 || !acceptingInput) return;
 
         var newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         facingDirection = newPos.normalized;
@@ -260,7 +264,7 @@ public class PlayerController : MonoBehaviour
         isInvulnerable = true;
         blink.StartBlinking();
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(_time);
 
         isInvulnerable = false;
         blink.StopBlinking();

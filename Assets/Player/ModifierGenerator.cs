@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public struct Modifier
@@ -176,9 +177,9 @@ public static class ModifierGenerator
         }
         else if (idx == 7) // 7 - bullet size
         {
-            if (strength == 0) mod.bulletSize = .10f; // 5 % increase
-            else if (strength == 1) mod.bulletSize = .15f; // 10 % increase
-            else mod.bulletSize = .25f; // 20 % increase
+            if (strength == 0) mod.bulletSize = .15f; // 5 % increase
+            else if (strength == 1) mod.bulletSize = .25f; // 10 % increase
+            else mod.bulletSize = .35f; // 20 % increase
 
             if (neg) mod.bulletSize *= -1; // make a decrease
 
@@ -198,10 +199,14 @@ public static class ModifierGenerator
         }
         else if (idx == 9) // 9 - bullet piercing
         {
+            if (DataDictionary.PlayerStats.Piercing) // already have
+                return CreateModifier(); // reroll;
+
             mod.bulletPiercing = true;
 
             mod.name = "Piercing Bullets";
             mod.description = "Grants bullets the ability to pierce through enemies and objects.";
+            mod.cost = 50;
         }
         else if (idx == 10) // 11 - bullet knockback
         {
@@ -227,6 +232,9 @@ public static class ModifierGenerator
         }
         else if (idx == 12) // 13 - crouch unlock
         {
+            if (DataDictionary.PlayerStats.HasCrouch) 
+                return CreateModifier(); // reroll if already have
+
             mod.crouch = true;
 
             mod.name = "Crouch Ability";
@@ -257,6 +265,11 @@ public static class ModifierGenerator
         }
         else if (idx == 14) // 15 - roll unlock
         {
+
+            if (DataDictionary.PlayerStats.HasRoll)
+                return CreateModifier(); // reroll if already have
+
+
             mod.roll = true;
 
             mod.name = "Roll Ability";

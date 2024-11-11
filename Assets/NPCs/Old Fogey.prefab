@@ -129,7 +129,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.57843184, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1.4, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4901233045191851063}
@@ -368,7 +368,7 @@ MonoBehaviour:
   contactDamage: 0
   aggression: 0
   splatter: {fileID: 8747640860640431247, guid: 5b07b2ace1c379846ac91731e5a112ae, type: 3}
-  bubble: {fileID: 3293186383067875092}
+  bubble: {fileID: 5433317259678540520}
   dist: 2
   dialogue:
   - go on, my child.
@@ -473,7 +473,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7
 --- !u!212 &2655544415148297415
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 6712774647933867866, guid: 8dc2cbc9c57299448961d03f16dc6125, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}

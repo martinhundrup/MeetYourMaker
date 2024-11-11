@@ -13,7 +13,13 @@ public class CentralGameManager : MonoBehaviour
     // places we'll need likely access to
     private GameSettings gameSettings;
     private PlayerStats playerStats;
-    private bool isPaused = false;
+    private static bool isPaused = false;
+
+    public static bool Paused
+    {
+        get { return isPaused; }
+        set { isPaused = value; }
+    }
 
     [SerializeField] private SceneField openingScene;
     [SerializeField] private SceneField level1;
@@ -53,7 +59,7 @@ public class CentralGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
         {
             isPaused = !isPaused;
             GameEvents.GamePaused(isPaused);
@@ -64,6 +70,7 @@ public class CentralGameManager : MonoBehaviour
 
     private void SubscribeGameEvents()
     {
+        GameEvents.OnExitToMainMenu += OnExitToMenu;
         GameEvents.OnGameStart += OnGameStart;
         GameEvents.OnPlayerRespawn += OnRespawn;
         GameEvents.OnLevelEnd += LoadLevel;
@@ -72,6 +79,7 @@ public class CentralGameManager : MonoBehaviour
 
     private void UnSubscribeGameEvents()
     {
+        GameEvents.OnExitToMainMenu -= OnExitToMenu;
         GameEvents.OnPlayerRespawn -= OnRespawn;
         GameEvents.OnLevelEnd -= LoadLevel;
         GameEvents.OnGameStart -= OnGameStart;
@@ -84,6 +92,7 @@ public class CentralGameManager : MonoBehaviour
         playerStats.ResetDefaults();
         HUDController.instance?.EnableHUD(false);
         SceneManager.LoadScene(openingScene.BuildIndex);
+        UpdateMusic();
     }
 
     private void OnRespawn()
@@ -105,6 +114,7 @@ public class CentralGameManager : MonoBehaviour
         playerStats.Respawn();
         SceneManager.LoadScene(openingScene.BuildIndex);
         yield return new WaitForSeconds(1f);
+        UpdateMusic();
         yield return StartCoroutine(HUDController.instance.FadeToClear());
         HUDController.instance.EnableHUD(false);
     }
@@ -122,6 +132,7 @@ public class CentralGameManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(modifierUpgrades.BuildIndex);
         yield return new WaitForSeconds(.5f);
+        UpdateMusic();
         yield return StartCoroutine(HUDController.instance.FadeToClear());
     }
 
@@ -132,7 +143,66 @@ public class CentralGameManager : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(modifierUpgrades.BuildIndex);
         yield return new WaitForSeconds(.5f);
+        UpdateMusic();
         yield return StartCoroutine(HUDController.instance.FadeToClear());
+    }
+
+    private void OnExitToMenu()
+    {
+        StartCoroutine(ExitToMenu());
+    }
+
+    private IEnumerator ExitToMenu()
+    {
+
+        yield return StartCoroutine(HUDController.instance.FadeToOpaque());
+        yield return new WaitForSeconds(1f);
+        gameSettings.GameLevel = 0;
+        playerStats.ResetDefaults();
+        SceneManager.LoadScene(0);
+        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(HUDController.instance.FadeToClear());
+        UpdateMusic();
+        HUDController.instance.EnableHUD(false);
+        
+
+    }
+
+    public void UpdateMusic()
+    {
+        gameSettings = DataDictionary.GameSettings;
+        if (SceneManager.GetActiveScene().buildIndex == 0) // menu music
+        {
+            SFXManager.instance?.PlayMenuBGM();
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == modifierUpgrades.BuildIndex)
+        {
+            SFXManager.instance?.PlayModifierBGM();
+        }
+        else if (gameSettings.GameLevel < 5) // level 1
+        {
+            SFXManager.instance?.PlayLevel1BGM();
+        }
+        else if (gameSettings.GameLevel < 10) // level 2
+        {
+            SFXManager.instance?.PlayLevel2BGM();
+        }
+        else if (gameSettings.GameLevel < 15) // level 3
+        {
+            SFXManager.instance?.PlayLevel3BGM();
+        }
+        else if (gameSettings.GameLevel < 20) // level 4
+        {
+            SFXManager.instance?.PlayLevel4BGM();
+        }
+        else if (gameSettings.GameLevel < 10) // level 5
+        {
+            SFXManager.instance?.PlayLevel5BGM();
+        }
+        else // level 6
+        {
+            SFXManager.instance?.PlayLevel6BGM();
+        }
     }
 
     private void LoadLevel()
@@ -147,7 +217,6 @@ public class CentralGameManager : MonoBehaviour
         }
         Debug.Log(gameSettings.GameLevel % 5);
         betweenLevels = false;
-
 
         if (gameSettings.GameLevel > 0) HUDController.instance.EnableHUD(true);
 
@@ -175,6 +244,8 @@ public class CentralGameManager : MonoBehaviour
         {
             SceneManager.LoadScene(level6.BuildIndex);
         }
+
+        UpdateMusic();
     }
 
     #endregion

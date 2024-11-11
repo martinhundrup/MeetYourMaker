@@ -207,7 +207,8 @@ MonoBehaviour:
   speed: 7
   hasHitstun: 1
   contactDamage: 2
-  aggression: 0.5
+  aggression: 0.8
+  splatter: {fileID: 0}
   jumpInterval: 1.5
   intervalMargin: 0.5
   moveTime: 0.3

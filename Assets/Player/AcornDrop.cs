@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AcornDrop : Acorn
 {
-
     private static readonly System.Random globalRandom = new System.Random();
     new protected void Awake()
     {
