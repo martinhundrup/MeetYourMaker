@@ -1,4 +1,3 @@
-
 # Rip and Tear
 Armed with his trusty acorn shotgun, help Shroomie dive deeper into the forest to eradicate the enemies within! This was created for the [Fall 2024 Crimson Game Jam](https://itch.io/jam/crimson-game-jam-fall-2024) with the theme of 'meet your maker'. [Play here!](https://hundrupm.itch.io/shroomwood-rip-and-tear)
 
