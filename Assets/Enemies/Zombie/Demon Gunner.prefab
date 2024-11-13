@@ -5591,7 +5591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 4326375897224800388}
-  projectile: {fileID: 5134309796571233652, guid: 6e6be88580405854db2f6c11676caee4, type: 3}
+  projectile: {fileID: 5134309796571233652, guid: 09e3ef015ba5b6d4eb262d75b0b444ea, type: 3}
   targetsPlayer: 1
   cardinal: 0
   ordinal: 0

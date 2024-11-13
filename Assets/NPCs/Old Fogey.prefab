@@ -360,7 +360,7 @@ MonoBehaviour:
   health: 100000
   acornDrops: {fileID: 0}
   numAcorns: 0
-  corpse: {fileID: 0}
+  corpse: {fileID: 6539512322366972734, guid: a26113e6610f3c1438f3f03390b1afda, type: 3}
   exp: {fileID: 0}
   cost: 0
   speed: 0
@@ -722,6 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleArrow: {fileID: 0}
+  waitTime: 0.01
 --- !u!1001 &7732818566153330074
 PrefabInstance:
   m_ObjectHideFlags: 0

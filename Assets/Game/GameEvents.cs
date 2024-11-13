@@ -26,6 +26,7 @@ public static class GameEvents
 
     public static void PlayerDeath()
     {
+        DataDictionary.PlayerStats.Deaths++;
         OnPlayerDeath?.Invoke();
     }
 

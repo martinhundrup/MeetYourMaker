@@ -15,7 +15,7 @@ MonoBehaviour:
   playerSpeed: 5
   playerMaxHealth: 5
   playerHealth: 5
-  ammoCount: 38
+  ammoCount: 30
   maxAmmo: 50
   exp: 0
   hasRoll: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   rollDuration: 0.3
   hasCrouch: 0
   crouchRegeneration: 0.1
-  canShoot: 0
+  canShoot: 1
   bulletCount: 5
   bulletSpread: 10
   bulletSpeed: 10

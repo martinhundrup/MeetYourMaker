@@ -129,7 +129,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 28
+      y: 4
       width: 15
       height: 15
     spriteID: 903952e740179c14d88613af0dc75b92
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 28}
+    uvTransform: {x: 4, y: 4}
   - name: demon_Frame_1
     originalName: 
     pivot: {x: 0.53333336, y: 0.5}
@@ -149,7 +149,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 97
+      y: 96
       width: 15
       height: 14
     spriteID: c91b30ae75b39d84ba7b306f63797a72
@@ -160,7 +160,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 97}
+    uvTransform: {x: 4, y: 96}
   - name: demon_Frame_2
     originalName: 
     pivot: {x: 0.53333336, y: 0.5}
@@ -189,7 +189,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 51
+      y: 27
       width: 15
       height: 15
     spriteID: a932f52a35a5ec541b31132a2e198f66
@@ -200,7 +200,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 51}
+    uvTransform: {x: 4, y: 27}
   - name: demon_Frame_4
     originalName: 
     pivot: {x: 0.53333336, y: 0.42857146}
@@ -229,7 +229,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 74
+      y: 50
       width: 15
       height: 15
     spriteID: 766c2a09498b94c4fa901c00f3455c42
@@ -240,7 +240,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 74}
+    uvTransform: {x: 4, y: 50}
   - name: demon_Frame_6
     originalName: 
     pivot: {x: 0.53333336, y: 0.42857146}
@@ -263,15 +263,15 @@ ScriptedImporter:
     uvTransform: {x: 27, y: 48}
   - name: demon_Frame_7
     originalName: 
-    pivot: {x: 0.53333336, y: 0.5}
+    pivot: {x: 0.53333336, y: 0.53333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
+      y: 73
       width: 15
-      height: 16
+      height: 15
     spriteID: c3c357fcba3281942bdbc106ae962a54
     spriteBone: []
     spriteOutline: []
@@ -280,7 +280,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 4}
+    uvTransform: {x: 4, y: 73}
   - name: demon_Frame_8
     originalName: 
     pivot: {x: 0.5, y: 0.8888889}
@@ -380,7 +380,7 @@ ScriptedImporter:
         x: 0
         y: 0
         width: 15
-        height: 16
+        height: 15
       spriteId: c3c357fcba3281942bdbc106ae962a54
     - name: demon_Frame_8
       frameIndex: 8

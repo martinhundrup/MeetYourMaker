@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class LevelDisplay : MonoBehaviour
+[RequireComponent(typeof(TextMeshProUGUI))]
+public class DeathDisplay : MonoBehaviour
 {
     private TextMeshProUGUI text;
-    private GameSettings game;
+    private PlayerStats player;
 
     private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
-        game = DataDictionary.GameSettings;
+        player = DataDictionary.PlayerStats;
     }
 
     private void Update()
     {
-        text.text = $"Floor: {game.GameLevel.ToString("000")}";
+        text.text = $"Deaths: {player.Deaths.ToString("000")}";
+
     }
 }

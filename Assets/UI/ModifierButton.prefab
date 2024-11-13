@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 1454290199229331593}
   - component: {fileID: 6536350162360192757}
   - component: {fileID: 1309970085229781286}
+  - component: {fileID: 4796396425004944630}
   m_Layer: 5
   m_Name: Cost
   m_TagString: Untagged
@@ -186,7 +187,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -16.931885, y: 16.161743}
-  m_SizeDelta: {x: 153.2358, y: 35.023}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &1454290199229331593
 CanvasRenderer:
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost: 00'
+  m_text: 'Cost: 000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17f80302daae75245a2522eee45c0fa3, type: 2}
   m_sharedMaterial: {fileID: -1204810085848809666, guid: 17f80302daae75245a2522eee45c0fa3, type: 2}
@@ -299,6 +300,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleArrow: {fileID: 0}
   waitTime: 0.01
+--- !u!114 &4796396425004944630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593057521903238554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &4749592352884782275
 GameObject:
   m_ObjectHideFlags: 0

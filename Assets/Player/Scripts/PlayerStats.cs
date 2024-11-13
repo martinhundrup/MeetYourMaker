@@ -17,6 +17,7 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private int ammoCount = 10;
     [SerializeField] private int maxAmmo = 10;
     [SerializeField] private int exp = 0;
+    [SerializeField] private int deaths = 0;
 
     [Header("Roll stuff")]
     [SerializeField] private bool hasRoll = false;
@@ -44,7 +45,12 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private bool bounces = false;
 
     #region PROPERTIES
-
+    
+    public int Deaths
+    {
+        get { return deaths; }
+        set { deaths = value; }
+    }
     public int EXP
     {
         get { return exp; }
@@ -195,8 +201,11 @@ public class PlayerStats : ScriptableObject
         //exp = 0; // don't reset exp
         OnDamageTaken?.Invoke();
     }
+
+    [Button]
     public void ResetDefaults()
     {
+        deaths = 0;
         playerSpeed = 5f;
         playerMaxHealth = 5f;
         playerHealth = 5f;
