@@ -3,10 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System.IO;
+using System.Runtime.InteropServices;
+using AOT;
+
 
 [CreateAssetMenu(menuName = "Player/PlayerStats")]
 public class PlayerStats : ScriptableObject
 {
+    private struct SavableData
+    {
+        public float playerSpeed;
+        public float maxHealth;
+        public int maxAmmo;
+        public int exp;
+        public int deaths;
+        public float gameTime;
+        public bool hasRoll;
+        public bool hasCrouch;
+        public float crouchRegen;
+        public int bulletCount;
+        public float bulletSpread;
+        public float bulletSpeed;
+        public float reloadTime;
+        public float bulletSize;
+        public float bulletDamage;
+        public float knockback;
+        public float stun;
+        public bool pierces;
+    }
+
+    private static PlayerStats instance;
+
+
     public delegate void DamageTakenAction();
     public event DamageTakenAction OnDamageTaken;
 
@@ -18,6 +47,7 @@ public class PlayerStats : ScriptableObject
     [SerializeField] private int maxAmmo = 10;
     [SerializeField] private int exp = 0;
     [SerializeField] private int deaths = 0;
+    [SerializeField] private float gameTime = 0;
 
     [Header("Roll stuff")]
     [SerializeField] private bool hasRoll = false;
@@ -46,6 +76,11 @@ public class PlayerStats : ScriptableObject
 
     #region PROPERTIES
     
+    public float GameTime
+    {
+        get { return gameTime; }
+        set { gameTime = value; }
+    }
     public int Deaths
     {
         get { return deaths; }
@@ -191,6 +226,13 @@ public class PlayerStats : ScriptableObject
 
     #endregion
 
+    private void OnEnable()
+    {
+        // Set the instance when this scriptable object is enabled
+        instance = this;
+    }
+
+
     [Button]
 
     // sets values to what they should be on respawn
@@ -205,6 +247,7 @@ public class PlayerStats : ScriptableObject
     [Button]
     public void ResetDefaults()
     {
+        gameTime = 0;
         deaths = 0;
         playerSpeed = 5f;
         playerMaxHealth = 5f;
@@ -248,5 +291,99 @@ public class PlayerStats : ScriptableObject
         if (mod.crouch) hasCrouch = true;
         crouchRegeneration *= 1f + mod.crouchRegen;
         if (mod.roll) hasRoll = true;
+    }
+
+
+    [DllImport("__Internal")]
+    private static extern void SaveFile(string data, string filename);
+
+    public void Save()
+    {
+        SavableData data = new SavableData
+        {
+            playerSpeed = playerSpeed,
+            maxHealth = playerMaxHealth,
+            maxAmmo = maxAmmo,
+            exp = exp,
+            deaths = deaths,
+            gameTime = gameTime,
+            hasRoll = hasRoll,
+            hasCrouch = hasCrouch,
+            crouchRegen = crouchRegeneration,
+            bulletCount = bulletCount,
+            bulletSpread = bulletSpread,
+            bulletSpeed = bulletSpeed,
+            reloadTime = reloadTime,
+            bulletSize = bulletSize,
+            bulletDamage = bulletDamage,
+            knockback = knockbackForce,
+            stun = stunTime,
+            pierces = piercing
+        };
+
+        string json = JsonUtility.ToJson(data, true);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SaveFile(json, "shroomie_stats.json");
+#else
+        // For testing in the editor, you could write to Application.persistentDataPath instead.
+        Debug.Log("Save feature works in WebGL only.");
+#endif
+    }
+
+    [DllImport("__Internal")]
+    private static extern void UploadFile(System.Action<string> callback);
+
+    public void LoadFromFile()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        UploadFile(OnFileUploadedStatic);
+#else
+        Debug.Log("Load feature works in WebGL only.");
+#endif
+    }
+
+    [MonoPInvokeCallback(typeof(Action<string>))]
+    private static void OnFileUploadedStatic(string json)
+    {
+        if (instance != null)
+        {
+            try
+            {
+                SavableData data = JsonUtility.FromJson<SavableData>(json);
+
+                instance.playerSpeed = data.playerSpeed;
+                instance.playerMaxHealth = data.maxHealth;
+                instance.maxAmmo = data.maxAmmo;
+                instance.exp = data.exp;
+                instance.deaths = data.deaths;
+                instance.gameTime = data.gameTime;
+                instance.hasRoll = data.hasRoll;
+                instance.hasCrouch = data.hasCrouch;
+                instance.crouchRegeneration = data.crouchRegen;
+                instance.bulletCount = data.bulletCount;
+                instance.bulletSpread = data.bulletSpread;
+                instance.bulletSpeed = data.bulletSpeed;
+                instance.reloadTime = data.reloadTime;
+                instance.bulletSize = data.bulletSize;
+                instance.bulletDamage = data.bulletDamage;
+                instance.knockbackForce = data.knockback;
+                instance.stunTime = data.stun;
+                instance.piercing = data.pierces;
+
+                Debug.Log("Player stats loaded successfully from JSON.");
+
+                // load starting scene
+                FindObjectOfType<PauseMenu>().OnKYS();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error loading JSON: " + e.Message);
+            }
+        }
+        else
+        {
+            Debug.LogError("PlayerStats instance not set. Make sure it is enabled before calling LoadFromFile.");
+        }
     }
 }

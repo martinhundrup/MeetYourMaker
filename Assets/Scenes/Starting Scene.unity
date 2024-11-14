@@ -518,6 +518,30 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1494121209892574056, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494121209892574056, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494121209892574056, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 155.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494121209892574056, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494121209892574056, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 81.505
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494121209892574056, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.005
+      objectReference: {fileID: 0}
     - target: {fileID: 1836949150251980696, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -555,6 +579,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3837113327171547742, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054248746410751041, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054248746410751041, guid: f7a2014680f7f4744946ebc639b12e25, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -78858,10 +78890,6 @@ PrefabInstance:
     - target: {fileID: 8356987612862831248, guid: e9a4edadb3cd1804d9307c8af87ba1ef, type: 3}
       propertyPath: m_Name
       value: Pause Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 8356987612862831248, guid: e9a4edadb3cd1804d9307c8af87ba1ef, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

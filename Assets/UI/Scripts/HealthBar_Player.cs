@@ -20,5 +20,7 @@ public class HealthBar_Player : MonoBehaviour
     {
         slider.value = stats.PlayerHealth / stats.PlayerMaxHealth;
         thingToExpand.sizeDelta = new Vector2(26f, stats.PlayerMaxHealth * 20);
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponentInParent<RectTransform>());
     }
 }

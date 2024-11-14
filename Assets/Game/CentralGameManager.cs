@@ -59,7 +59,8 @@ public class CentralGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
+        playerStats.GameTime += Time.deltaTime;
+        if (Input.GetButtonDown("Pause") && SceneManager.GetActiveScene().buildIndex != 0)
         {
             isPaused = !isPaused;
             GameEvents.GamePaused(isPaused);
@@ -215,7 +216,6 @@ public class CentralGameManager : MonoBehaviour
             StartCoroutine(PlayerWin());
             return;
         }
-        Debug.Log(gameSettings.GameLevel % 5);
         betweenLevels = false;
 
         if (gameSettings.GameLevel > 0) HUDController.instance.EnableHUD(true);

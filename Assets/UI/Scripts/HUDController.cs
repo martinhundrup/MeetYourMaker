@@ -5,6 +5,7 @@ using UnityEngine;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] GameObject fadingCanvas;
+    [SerializeField] GameObject timer;
     [SerializeField] List<GameObject> elements = new List<GameObject>();
     public static HUDController instance;
 
@@ -22,6 +23,7 @@ public class HUDController : MonoBehaviour
 
     public void EnableHUD(bool _bool)
     {
+        timer.SetActive(true); // don't disable after it's been enabled
         foreach (var element in elements)
         {
             element.SetActive(_bool);
