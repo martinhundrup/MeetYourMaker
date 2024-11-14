@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -83,8 +84,7 @@ public class DungeonGenerator : MonoBehaviour
 
         foreach (var obstacle in obstacles)
         {
-            int i = index++;
-            obstacle.PlaceObstacles(obstacleTiles, i);
+            obstacle.PlaceObstacles(obstacleTiles, index++);
         }
     }
 
@@ -159,6 +159,7 @@ public class DungeonGenerator : MonoBehaviour
                     newRoom % roomWidth >= borderWidth && newRoom % roomWidth < roomWidth - borderWidth &&
                     roomTiles[newRoom] == 0)
                 {
+                    if (newRoom == 279 + 18) Debug.Log("NOT A WALL");
                     roomTiles[newRoom] = 1;
                     roomTilesList.Add(newRoom);
                     //Debug.Log($"existing room: {existingTile}, new room: {newRoom}");
@@ -217,8 +218,12 @@ public class DungeonGenerator : MonoBehaviour
                 }
                 else if (UnityEngine.Random.Range(1, 101) < 50) // 75% chance to place actual object
                 {
-                    var ob = Instantiate(obstacles[obstacleTiles[i] - 1].ObstaclePrefab, transform);
-                    ob.transform.localPosition = new Vector2(x + 0.5f, y + 0.5f);
+                    // now check from distance to starting point
+                    if (Vector2.Distance(ConvertToWorldPosition(i), ConvertToWorldPosition(Convert2DTo1DIndex(roomHeight / 2, roomWidth / 2))) > 2.5f)
+                    {
+                        var ob = Instantiate(obstacles[obstacleTiles[i] - 1].ObstaclePrefab, transform);
+                        ob.transform.localPosition = new Vector2(x + 0.5f, y + 0.5f);
+                    }                    
                 }
             }
         }

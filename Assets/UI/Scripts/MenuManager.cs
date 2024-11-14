@@ -21,7 +21,6 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         yield return StartCoroutine(menuText.SetText("shroomwood"));
-        yield return new WaitForSeconds(1f);
         yield return StartCoroutine(subtitleText.SetText("rip and tEar"));
         yield return new WaitForSeconds(0.2f);
         StartCoroutine(text.SetText("press left click to continue"));

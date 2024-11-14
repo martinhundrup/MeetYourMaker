@@ -30,8 +30,6 @@ public class ObstacleGenerator : ScriptableObject
 
     virtual public void PlaceObstacles(int[] obstacleTiles, int _index)
     {
-        index = _index;
-
         roomHeight = DataDictionary.GameSettings.RoomSize.x;
         roomWidth = DataDictionary.GameSettings.RoomSize.y;
 
@@ -48,7 +46,7 @@ public class ObstacleGenerator : ScriptableObject
                     float perlinValue = Mathf.PerlinNoise((x * scale) + offsetX, (y * scale) + offsetY);
                     if (perlinValue > threshold) // Adjust the threshold as needed
                     {
-                        obstacleTiles[i] = index;
+                        obstacleTiles[i] = _index;
                     }
                 }
             }

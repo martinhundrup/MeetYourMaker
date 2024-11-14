@@ -52,7 +52,7 @@ public class RoomController : MonoBehaviour
         if (enemyCount <= 0)
         {
             SFXManager.instance.PlayOpen();
-            Instantiate(endOfLevel).transform.position = Vector2.zero;
+            Instantiate(endOfLevel).transform.position = new Vector2(0.5f, 0.5f);
         }
     }
 }
